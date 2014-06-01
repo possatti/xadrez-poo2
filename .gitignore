@@ -1,9 +1,2 @@
-*.class
-*.dat
-*.bak
-
-# Package Files #
-*.jar
-*.war
-*.ear
-Xadrez/target/**/*
+# Maven build.
+target/
