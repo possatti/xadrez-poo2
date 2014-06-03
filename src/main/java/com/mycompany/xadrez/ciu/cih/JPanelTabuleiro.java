@@ -12,13 +12,32 @@ package com.mycompany.xadrez.ciu.cih;
  */
 public class JPanelTabuleiro extends javax.swing.JPanel {
 
+    JPanelCasa casas[][] = new JPanelCasa[8][8];
+    
     /**
      * Creates new form JPanelTabuleiro
      */
     public JPanelTabuleiro() {
         initComponents();
+        initCasas();
     }
 
+    /**
+     * Posiciona as casas dentro do tabuleiro.
+     */
+    private void initCasas() {
+        for (int linha = 0; linha < 8; linha++) {
+            for (int coluna = 0; coluna < 8; coluna++) {
+                if ((linha + coluna) % 2 == 0) {
+                    casas[linha][coluna] = CasaFactory.criarCasaBranca(linha, coluna);
+                } else {
+                    casas[linha][coluna] = CasaFactory.criarCasaPreta(linha, coluna);
+                }
+                this.add(casas[linha][coluna]);
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +47,8 @@ public class JPanelTabuleiro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setBackground(new java.awt.Color(153, 0, 0));
+        setPreferredSize(new java.awt.Dimension(400, 400));
         setLayout(new java.awt.GridLayout(8, 8));
     }// </editor-fold>//GEN-END:initComponents
 

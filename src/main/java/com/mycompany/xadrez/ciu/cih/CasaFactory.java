@@ -25,7 +25,7 @@ public class CasaFactory {
      * @return Casa
      */
     public static JPanelCasa criarCasa(Color color, int linha, int coluna) {
-        JPanelCasa casa = new JPanelCasa(linha, coluna);
+        JPanelCasa casa = new JPanelCasa(color, linha, coluna);
         casa.setBackground(color);
         casa.add(new JLabel());
 

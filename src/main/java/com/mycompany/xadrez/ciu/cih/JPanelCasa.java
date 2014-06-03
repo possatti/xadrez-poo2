@@ -6,16 +6,33 @@
 
 package com.mycompany.xadrez.ciu.cih;
 
+import java.awt.Color;
+
 /**
  *
  * @author possatti
  */
 public class JPanelCasa extends javax.swing.JPanel {
     
+    private int linha;
+    private int coluna;
+    private Color corFundo;
+    static final private Color corHighlight = Color.YELLOW;
+    
     /**
      * Creates new form JPanelCasa
      */
     public JPanelCasa() {
+        initComponents();
+    }
+    
+    /**
+     * Creates new form JPanelCasa
+     */
+    public JPanelCasa(Color cor, int linha, int coluna) {
+        this.linha = linha;
+        this.coluna = coluna;
+        this.corFundo = cor;
         initComponents();
     }
 
@@ -28,17 +45,35 @@ public class JPanelCasa extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // Coloca a cor de destaque.
+        this.setBackground(corHighlight);
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        this.setBackground(corFundo);
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

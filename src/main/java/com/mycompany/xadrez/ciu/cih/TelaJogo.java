@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.xadrez.ciu.cih;
+
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,24 +15,18 @@ package com.mycompany.xadrez.ciu.cih;
  */
 public class TelaJogo extends javax.swing.JFrame {
 
+    JDialogCadastrarJogador jDialogCadastrarJogador;
+
     /**
      * Creates new form TelaJogo
      */
     public TelaJogo() {
         initComponents();
+        initDialogs();
     }
-    
-    /**
-     * Envia a mensagem do campo de texto para a tela do chat.
-     */
-    public void enviarMensagem() {
-        String mensagem = jTextFieldMensagem.getText();
-        
-        // Se a string não estiver vazia. A mensagem e adicionada ao chat.
-        if(!"".equals(mensagem)) {
-            jTextAreaChat.append(mensagem + "\n");
-            jTextFieldMensagem.setText("");
-        }
+
+    private void initDialogs() {
+        jDialogCadastrarJogador = new JDialogCadastrarJogador(this, true);
     }
 
     /**
@@ -40,12 +37,10 @@ public class TelaJogo extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanelTabuleiro1 = new com.mycompany.xadrez.ciu.cih.JPanelTabuleiro();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaChat = new javax.swing.JTextArea();
-        jTextFieldMensagem = new javax.swing.JTextField();
-        jButtonEnviar = new javax.swing.JButton();
+        jPanelChat1 = new com.mycompany.xadrez.ciu.cih.JPanelChat();
+        jPanelJogo1 = new com.mycompany.xadrez.ciu.cih.JPanelJogo();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuPartidas = new javax.swing.JMenu();
         jMenuItemSingleplayer = new javax.swing.JMenuItem();
@@ -61,32 +56,16 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-
-        jPanelTabuleiro1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextAreaChat.setEditable(false);
-        jTextAreaChat.setColumns(20);
-        jTextAreaChat.setLineWrap(true);
-        jTextAreaChat.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaChat);
-
-        jTextFieldMensagem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tecla_enter(evt);
-            }
-        });
-
-        jButtonEnviar.setText("Enviar");
-        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnviarActionPerformed(evt);
-            }
-        });
+        setMaximumSize(new java.awt.Dimension(260, 487));
 
         jMenuPartidas.setText("Partidas");
 
         jMenuItemSingleplayer.setText("Nova partida singleplayer");
+        jMenuItemSingleplayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSingleplayerActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSingleplayer);
 
         jMenuItemMultiplayer.setText("Nova partida multiplayer");
@@ -106,12 +85,22 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenujogadores.setText("Jogadores");
 
         jMenuItemCadastrarJogador.setText("Cadastrar novo jogador");
+        jMenuItemCadastrarJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastrarJogadorActionPerformed(evt);
+            }
+        });
         jMenujogadores.add(jMenuItemCadastrarJogador);
 
         jMenuItemEditarJogador.setText("Editar jogador");
         jMenujogadores.add(jMenuItemEditarJogador);
 
         jMenuItemApagarJogador.setText("Apagar jogador");
+        jMenuItemApagarJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemApagarJogadorActionPerformed(evt);
+            }
+        });
         jMenujogadores.add(jMenuItemApagarJogador);
 
         jMenuBar1.add(jMenujogadores);
@@ -129,48 +118,88 @@ public class TelaJogo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextFieldMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEnviar))
-                    .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
-                .addComponent(jPanelTabuleiro1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelChat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelJogo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jPanelTabuleiro1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEnviar))
+                    .addComponent(jPanelJogo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelChat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
-        enviarMensagem();
-    }//GEN-LAST:event_jButtonEnviarActionPerformed
+    private void jMenuItemSingleplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSingleplayerActionPerformed
+        // Opções
+        String maquinas[] = {"Zeus"};
+        String jogadores[] = {"Possatti", "Phillipe"};
+        String cores[] = {
+            CorPeca.BRANCO.toString(),
+            CorPeca.PRETO.toString()
+        };
 
-    private void tecla_enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecla_enter
-        // Se a tecla enter for pressionada, manda a mensagem para o chat.
-        if ('\n' == evt.getKeyChar()) {
-            enviarMensagem();
-        }
-    }//GEN-LAST:event_tecla_enter
+        // Abre o diálogo de novo jogo
+        JComboBox jogador = new JComboBox(jogadores);
+        JComboBox maquina = new JComboBox(maquinas);
+        JComboBox corJogador = new JComboBox(cores);
+
+        Object[] message = {
+            "Jogador:", jogador,
+            "Máquina", maquina,
+            "Cor do jogador:", corJogador,};
+        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
+
+        // TODO Inicia o novo jogo.
+        System.out.println(jogador.getSelectedItem());
+        System.out.println(maquina.getSelectedItem());
+        System.out.println(corJogador.getSelectedItem());
+    }//GEN-LAST:event_jMenuItemSingleplayerActionPerformed
+
+    private void jMenuItemCadastrarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarJogadorActionPerformed
+        // Abre o diálogo de cadastro de jogador.
+        JTextField jApelido = new JTextField();
+        JTextField jEmail = new JTextField();
+        JTextField jNome = new JTextField();
+
+        Object[] message = {
+            "Apelido:", jApelido,
+            "E-mail:", jEmail,
+            "Nome:", jNome,};
+        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
+
+        // Captura as informações
+        String apelido = jApelido.getText();
+        String email = jEmail.getText();
+        String nome = jNome.getText();
+
+        // TODO Grava os dados.
+        System.out.println("apelido");
+        System.out.println("email");
+        System.out.println("nome");
+    }//GEN-LAST:event_jMenuItemCadastrarJogadorActionPerformed
+
+    private void jMenuItemApagarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemApagarJogadorActionPerformed
+        // Abre o diálogo
+        JTextField jApelido = new JTextField();
+        Object[] message = {
+            "Apelido:", jApelido,};
+        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
+
+        // Captura as informações.
+        String apelido = jApelido.getText();
+
+        // TODO Grava os dados.
+        System.out.println(apelido);
+    }//GEN-LAST:event_jMenuItemApagarJogadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,7 +237,6 @@ public class TelaJogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemApagarJogador;
@@ -222,9 +250,7 @@ public class TelaJogo extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSobre;
     private javax.swing.JMenu jMenuPartidas;
     private javax.swing.JMenu jMenujogadores;
-    private com.mycompany.xadrez.ciu.cih.JPanelTabuleiro jPanelTabuleiro1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaChat;
-    private javax.swing.JTextField jTextFieldMensagem;
+    private com.mycompany.xadrez.ciu.cih.JPanelChat jPanelChat1;
+    private com.mycompany.xadrez.ciu.cih.JPanelJogo jPanelJogo1;
     // End of variables declaration//GEN-END:variables
 }
