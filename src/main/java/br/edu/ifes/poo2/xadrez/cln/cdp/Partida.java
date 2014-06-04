@@ -5,24 +5,20 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 
 public class Partida {
 
-	private Jogador jogadorDaVez;
+    private Jogador jogadorDaVez;
 
-	private Map pecasCapturadas;
+    private Map pecasCapturadas;
 
-	private Jogador jogador;
+    private Tabuleiro tabuleiro;
 
-	private Jogador jogador;
+    private Jogador jogadorBranco;
 
-	private Tabuleiro tabuleiro;
+    private Jogador jogadorPreto;
 
-	private Jogador jogadorBranco;
+    private TipoPartida tipoPartida;
 
-	private Jogador jogadorPreto;
+    public Partida(Jogador jogadorBranco, Jogador jogadorPreto, Tabuleiro tabuleiro) {
 
-	private TipoPartida tipoPartida;
-
-	public Partida(Jogador jogadorBranco, Jogador jogadorPreto, Tabuleiro tabuleiro) {
-
-	}
+    }
 
 }

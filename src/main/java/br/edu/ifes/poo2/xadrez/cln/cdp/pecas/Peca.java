@@ -4,18 +4,19 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
 
 public interface Peca extends Cloneable {
 
-	public abstract Cor getCor();
+	public Cor getCor();
 
-	public abstract TipoPeca getTipoPeca();
+	public TipoPeca getTipoPeca();
 
-	public abstract Posicao getPosicao();
+	public Posicao getPosicao();
 
-	public abstract void setPosicao(Posicao posicao);
+	public void setPosicao(Posicao posicao);
 
-	public abstract boolean validarMovimento(Posicao novaPosicao);
+	public boolean validarMovimento(Posicao novaPosicao);
 
-	public abstract boolean validarMovimentoCaptura(Posicao novaPosicao);
+	public boolean validarMovimentoCaptura(Posicao novaPosicao);
 
-	public abstract boolean jaMovimentou();
-
+	public boolean jaMovimentou();
+        
+        public Peca clone();
 }
