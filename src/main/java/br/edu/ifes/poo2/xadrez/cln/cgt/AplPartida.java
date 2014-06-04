@@ -1,5 +1,6 @@
 package br.edu.ifes.poo2.xadrez.cln.cgt;
 
+import br.edu.ifes.poo2.xadrez.cln.cdp.InteligenciaArtificial;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Partida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroBuilderImpl;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroDirector;
