@@ -6,12 +6,12 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 
 public abstract class StrategyPecaImpl implements StrategyPeca {
 
-    private char colunaAtual;
-    private char linhaAtual;
-    private char colunaNova;
-    private char linhaNova;
+    protected char colunaAtual;
+    protected char linhaAtual;
+    protected char colunaNova;
+    protected char linhaNova;
 
-    private void setVariaveis(Posicao posicaoInicial, Posicao posicaoFinal) {
+    protected void setVariaveis(Posicao posicaoInicial, Posicao posicaoFinal) {
         colunaAtual = posicaoInicial.getId().charAt(0);
         linhaAtual = posicaoInicial.getId().charAt(1);
         colunaNova = posicaoFinal.getId().charAt(0);
