@@ -11,6 +11,8 @@ public interface Peca extends Cloneable {
 	public Posicao getPosicao();
 
 	public void setPosicao(Posicao posicao);
+        
+        public void setPosicaoInicial(Posicao posicao);
 
 	public boolean validarMovimento(Posicao novaPosicao);
 
@@ -18,5 +20,7 @@ public interface Peca extends Cloneable {
 
 	public boolean jaMovimentou();
         
-        public Peca clone();
+        public boolean moveuUmaVez();
+        
+        public Peca clone() throws CloneNotSupportedException;
 }

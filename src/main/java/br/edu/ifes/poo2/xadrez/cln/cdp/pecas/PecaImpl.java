@@ -9,75 +9,65 @@ public class PecaImpl implements Peca {
 
     private boolean jaMovimentou;
 
+    private boolean moveuUmaVez;
+
     @Getter
     @Setter
     private Cor cor;
 
+    @Getter
+    @Setter
     private TipoPeca tipoPeca;
 
-    private Posicao posicao;
-
+    @Getter
+    @Setter
     private StrategyPeca estrategia;
 
-    /**
-     * @see br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#getCor()
-     */
-    public Cor getCor() {
-        return null;
-    }
+    @Getter
+    private Posicao posicao;
 
-    /**
-     * @see br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#getTipoPeca()
-     *
-     *
-     */
-    public TipoPeca getTipoPeca() {
-        return null;
-    }
-
-    /**
-     * @see br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#getPosicao()
-     */
-    public Posicao getPosicao() {
-        return null;
-    }
-
-    /**
-     * @see
-     * br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#setPosicao(br.edu.ifes.poo2.xadrez.cln.cdp.Posicao)
-     *
-     *
-     */
+    @Override
     public void setPosicao(Posicao posicao) {
+        this.posicao = posicao;
 
-    }
-
-    /**
-     * @see
-     * br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#validarMovimento(br.edu.ifes.poo2.xadrez.cln.cdp.Posicao)
-     */
-    public boolean validarMovimento(Posicao novaPosicao) {
-        return false;
-    }
-
-    /**
-     * @see
-     * br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#validarMovimentoCaptura(br.edu.ifes.poo2.xadrez.cln.cdp.Posicao)
-     */
-    public boolean validarMovimentoCaptura(Posicao novaPosicao) {
-        return false;
-    }
-
-    /**
-     * @see br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca#jaMovimentou()
-     */
-    public boolean jaMovimentou() {
-        return false;
+        this.verificarMovimento();
     }
 
     @Override
-    public Peca clone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setPosicaoInicial(Posicao posicao) {
+        this.posicao = posicao;
     }
 
+    public void verificarMovimento() {
+        this.moveuUmaVez = !this.jaMovimentou;
+
+        if (!this.jaMovimentou) {
+            this.jaMovimentou = true;
+        }
+    }
+
+    @Override
+    public boolean validarMovimento(Posicao novaPosicao) {
+        return estrategia.validarMovimento(posicao, novaPosicao);
+    }
+
+    @Override
+    public boolean validarMovimentoCaptura(Posicao novaPosicao) {
+        return estrategia.validarMovimentoCaptura(posicao, novaPosicao);
+    }
+
+    @Override
+    public Peca clone() throws CloneNotSupportedException {
+        return (Peca) super.clone();
+    }
+
+    @Override
+    public boolean jaMovimentou() {
+        return jaMovimentou;
+    }
+
+    @Override
+    public boolean moveuUmaVez() {
+        return this.moveuUmaVez;
+    }
 }
