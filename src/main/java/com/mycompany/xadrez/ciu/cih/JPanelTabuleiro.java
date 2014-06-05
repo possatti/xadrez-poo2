@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.xadrez.ciu.cih;
 
 /**
@@ -12,22 +11,61 @@ package com.mycompany.xadrez.ciu.cih;
  */
 public class JPanelTabuleiro extends javax.swing.JPanel {
 
-    JPanelCasa casas[][] = new JPanelCasa[8][8];
-    
+    public static final int NUM_LINHAS = 8;
+    public static final int NUM_COLUNAS = 8;
+
+    private JPanelCasa casas[][] = new JPanelCasa[NUM_LINHAS][NUM_COLUNAS];
+
     /**
      * Creates new form JPanelTabuleiro
      */
     public JPanelTabuleiro() {
         initComponents();
         initCasas();
+        posicionarPecas();
+    }
+
+    /**
+     * Posiciona as peças segundo a formação inicial do jogo.
+     */
+    public void posicionarPecas() {
+        // Posiciona peões brancos.
+        for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
+            casas[1][coluna].colocarPeca(TipoPeca.PEAO_BRANCO);
+        }
+
+        // Posiciona peões pretos.
+        for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
+            casas[6][coluna].colocarPeca(TipoPeca.PEAO_PRETO);
+        }
+
+        // Posiciona outras peças brancas.
+        casas[0][0].colocarPeca(TipoPeca.TORRE_BRANCO);
+        casas[0][1].colocarPeca(TipoPeca.CAVALO_BRANCO);
+        casas[0][2].colocarPeca(TipoPeca.BISPO_BRANCO);
+        casas[0][3].colocarPeca(TipoPeca.DAMA_BRANCO);
+        casas[0][4].colocarPeca(TipoPeca.REI_BRANCO);
+        casas[0][5].colocarPeca(TipoPeca.BISPO_BRANCO);
+        casas[0][6].colocarPeca(TipoPeca.CAVALO_BRANCO);
+        casas[0][7].colocarPeca(TipoPeca.TORRE_BRANCO);
+
+        // Posiciona outras peças pretas.
+        casas[7][0].colocarPeca(TipoPeca.TORRE_PRETO);
+        casas[7][1].colocarPeca(TipoPeca.CAVALO_PRETO);
+        casas[7][2].colocarPeca(TipoPeca.BISPO_PRETO);
+        casas[7][3].colocarPeca(TipoPeca.DAMA_PRETO);
+        casas[7][4].colocarPeca(TipoPeca.REI_PRETO);
+        casas[7][5].colocarPeca(TipoPeca.BISPO_PRETO);
+        casas[7][6].colocarPeca(TipoPeca.CAVALO_PRETO);
+        casas[7][7].colocarPeca(TipoPeca.TORRE_PRETO);
     }
 
     /**
      * Posiciona as casas dentro do tabuleiro.
      */
     private void initCasas() {
-        for (int linha = 0; linha < 8; linha++) {
-            for (int coluna = 0; coluna < 8; coluna++) {
+        for (int linha = NUM_COLUNAS - 1; linha >= 0; linha--) {
+            for (int coluna = 0; coluna < NUM_LINHAS; coluna++) {
                 if ((linha + coluna) % 2 == 0) {
                     casas[linha][coluna] = CasaFactory.criarCasaBranca(linha, coluna);
                 } else {
@@ -37,7 +75,7 @@ public class JPanelTabuleiro extends javax.swing.JPanel {
             }
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

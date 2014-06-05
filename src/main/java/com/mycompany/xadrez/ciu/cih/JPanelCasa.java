@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.xadrez.ciu.cih;
 
 import java.awt.Color;
@@ -13,27 +12,81 @@ import java.awt.Color;
  * @author possatti
  */
 public class JPanelCasa extends javax.swing.JPanel {
-    
+
     private int linha;
     private int coluna;
+    private TipoPeca peca;
     private Color corFundo;
     static final private Color corHighlight = Color.YELLOW;
-    
+
     /**
-     * Creates new form JPanelCasa
+     * Cria uma casa sem nenhuma das referências necessárias para o
+     * funcionamento normal.
      */
     public JPanelCasa() {
         initComponents();
     }
-    
+
     /**
-     * Creates new form JPanelCasa
+     * Cria uma casa vazia (i.e. sem peça alguma).
+     *
+     * @param cor Cor da casa.
+     * @param linha Referência da linha no tabuleiro.
+     * @param coluna Referência da coluna no tabuleiro.
      */
     public JPanelCasa(Color cor, int linha, int coluna) {
+        this();
         this.linha = linha;
         this.coluna = coluna;
         this.corFundo = cor;
-        initComponents();
+        this.peca = null;
+    }
+
+    /**
+     * Cria uma casa já prenchida com alguma peça em seu interior.
+     *
+     * @param cor Cor da casa.
+     * @param linha Referência da linha no tabuleiro.
+     * @param coluna Referência da coluna no tabuleiro.
+     * @param peca Tipo da peça que essa casa deve exibir inicialmente.
+     */
+    public JPanelCasa(Color cor, int linha, int coluna, TipoPeca peca) {
+        this(cor, linha, coluna);
+        this.peca = peca;
+    }
+
+    /**
+     * Retira uma peça de dentro da casa e retorna-a.
+     *
+     * @return Tipo da peça retirada.
+     */
+    public TipoPeca retirarPeca() {
+        TipoPeca pecaRetirada = this.peca;
+        this.peca = null;
+        atualizarIconePeca();
+        return pecaRetirada;
+    }
+
+    /**
+     * Coloca uma peça dentro desta casa. É importante notar que se já houver
+     * alguma peça na casa, ela será substituída.
+     *
+     * @param novaPeca Peça que será inserida dentro da casa.
+     */
+    public void colocarPeca(TipoPeca novaPeca) {
+        this.peca = novaPeca;
+        atualizarIconePeca();
+    }
+
+    /**
+     * Atualiza o ícone que representa a peça que está contida nesta casa.
+     */
+    public void atualizarIconePeca() {
+        if (peca == null) {
+            jLabelPecaIcon.setIcon(null);
+        } else {
+            jLabelPecaIcon.setIcon(peca.getIcon());
+        }
     }
 
     /**
@@ -44,6 +97,8 @@ public class JPanelCasa extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        jLabelPecaIcon = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
@@ -58,11 +113,13 @@ public class JPanelCasa extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addComponent(jLabelPecaIcon)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabelPecaIcon)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -77,5 +134,6 @@ public class JPanelCasa extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelPecaIcon;
     // End of variables declaration//GEN-END:variables
 }

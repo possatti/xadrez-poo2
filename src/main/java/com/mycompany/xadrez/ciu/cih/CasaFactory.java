@@ -6,6 +6,7 @@
 package com.mycompany.xadrez.ciu.cih;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
@@ -22,12 +23,13 @@ public class CasaFactory {
      * Cria uma casa com a cor especificada como fundo.
      *
      * @param color Cor do fundo
+     * @param linha Linha da casa no tabuleiro.
+     * @param coluna Coluna da casa no tabuleiro.
      * @return Casa
      */
     public static JPanelCasa criarCasa(Color color, int linha, int coluna) {
         JPanelCasa casa = new JPanelCasa(color, linha, coluna);
         casa.setBackground(color);
-        casa.add(new JLabel());
 
         return casa;
     }
@@ -35,15 +37,19 @@ public class CasaFactory {
     /**
      * Cria uma casa com o fundo da cor preta.
      *
+     * @param linha Linha da casa no tabuleiro.
+     * @param coluna Coluna da casa no tabuleiro.
      * @return Casa
      */
     public static JPanelCasa criarCasaPreta(int linha, int coluna) {
-        return criarCasa(Color.BLACK, linha, coluna);
+        return criarCasa(Color.LIGHT_GRAY, linha, coluna);
     }
 
     /**
      * Cria uma casa com o fundo da cor branca.
      *
+     * @param linha Linha da casa no tabuleiro.
+     * @param coluna Coluna da casa no tabuleiro.
      * @return Casa
      */
     public static JPanelCasa criarCasaBranca(int linha, int coluna) {
