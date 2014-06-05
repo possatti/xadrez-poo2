@@ -11,8 +11,6 @@ public class StrategyTorre extends StrategyPecaImpl {
     public boolean validarMovimento(Posicao posicaoAnterior, Posicao novaPosicao) {
         List<String> caminho;
 
-        super.setVariaveis(posicaoAnterior, novaPosicao);
-
         if (!novaPosicao.existePeca()) {
             caminho = caminhoReto(posicaoAnterior, novaPosicao);
             return ehCaminhoReto(posicaoAnterior, novaPosicao) && !haPecas(caminho, posicaoAnterior.getTabuleiro());
@@ -44,6 +42,8 @@ public class StrategyTorre extends StrategyPecaImpl {
      */
     public List<String> caminhoReto(Posicao posicaoAtual, Posicao novaPosicao) {
         List<String> caminho;
+
+        super.setVariaveis(posicaoAtual, novaPosicao);
 
         //Norte
         if (colunaAtual == colunaNova && linhaAtual < linhaNova) {
