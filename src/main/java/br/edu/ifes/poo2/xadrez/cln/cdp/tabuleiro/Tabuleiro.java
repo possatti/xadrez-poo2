@@ -2,20 +2,44 @@ package br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 import java.util.Map;
 
 public class Tabuleiro implements Cloneable {
 
-    private Map<String, Posicao> posicoes;
+    private final Map<String, Posicao> posicoes;
 
+    public Tabuleiro(Map<String, Posicao> posicoes) {
+        this.posicoes = posicoes;
+    }
+
+    /**
+     * Pega uma posição do Tabuleiro
+     *
+     * @param id id da Posição. Ex.: {@code "11"} para coluna 1 e linha 1 ou
+     * {@code "32"} para coluna 3 e linha 2
+     * @return a Posicao pedida.
+     */
     public Posicao getPosicao(String id) {
-        return null;
+        return posicoes.get(id);
     }
 
     public Posicao getPosicaoRei(Cor cor) {
-        return null;
+        Posicao posicaoRei = null;
+
+        for (Map.Entry<String, Posicao> entry : posicoes.entrySet()) {
+            Posicao posicao = entry.getValue();
+
+            if (posicao.existePeca() && posicao.getPeca().getTipoPeca() == TipoPeca.REI
+                    && posicao.getPeca().getCor() == cor) {
+                posicaoRei = posicao;
+            }
+        }
+
+        return posicaoRei;
     }
 
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
