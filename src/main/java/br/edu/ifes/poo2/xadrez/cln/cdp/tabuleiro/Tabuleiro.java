@@ -4,14 +4,12 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 import java.util.Map;
+import lombok.Setter;
 
-public class Tabuleiro implements Cloneable {
+public class Tabuleiro {
 
-    private final Map<String, Posicao> posicoes;
-
-    public Tabuleiro(Map<String, Posicao> posicoes) {
-        this.posicoes = posicoes;
-    }
+    @Setter
+    private Map<String, Posicao> posicoes;
 
     /**
      * Pega uma posição do Tabuleiro
@@ -38,10 +36,4 @@ public class Tabuleiro implements Cloneable {
 
         return posicaoRei;
     }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
 }

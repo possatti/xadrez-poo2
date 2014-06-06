@@ -6,6 +6,6 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 
 public interface FabricaPecas {
 
-	public abstract Peca fabricarPeca(Cor Cor, TipoPeca peca);
+    public abstract Peca fabricarPeca(Cor Cor, TipoPeca peca);
 
 }
