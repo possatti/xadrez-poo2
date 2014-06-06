@@ -19,7 +19,6 @@ public class PecaImpl implements Peca {
     @Setter
     private TipoPeca tipoPeca;
 
-    @Getter
     @Setter
     private StrategyPeca estrategia;
 
