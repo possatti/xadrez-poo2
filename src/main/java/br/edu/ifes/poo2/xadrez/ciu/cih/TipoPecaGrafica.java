@@ -12,11 +12,11 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
- * Enumera os tipos de peças que podem existir.
+ * Enumera os tipos de peças que podem existir, graficamente.
  *
  * @author possatti
  */
-public enum TipoPeca {
+public enum TipoPecaGrafica {
 
     BISPO_PRETO("black_bishop.png"),
     REI_PRETO("black_king.png"),
@@ -47,14 +47,14 @@ public enum TipoPeca {
      *
      * @param nomeArquivo Nome do arquivo da imagem.
      */
-    private TipoPeca(String nomeArquivo) {
+    private TipoPecaGrafica(String nomeArquivo) {
         try {
             // Carrega o arquivo de imagem da peça e associa a instância.
             this.image = ImageLoader.INSTANCE.loadImageResource(nomeArquivo);
             this.icon = new ImageIcon(this.image);
         } catch (IOException ex) {
             // Grava no log se as imagens não forem encontradas.
-            Logger.getLogger(TipoPeca.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TipoPecaGrafica.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

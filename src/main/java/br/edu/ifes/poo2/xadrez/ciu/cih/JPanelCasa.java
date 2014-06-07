@@ -5,9 +5,11 @@
  */
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
+import br.edu.ifes.poo2.xadrez.ciu.cci.Controlador;
 import java.awt.Color;
 
 /**
+ * Representa uma casa do tabuleiro, graficamente.
  *
  * @author possatti
  */
@@ -15,9 +17,11 @@ public class JPanelCasa extends javax.swing.JPanel {
 
     private int linha;
     private int coluna;
-    private TipoPeca peca;
+    private TipoPecaGrafica peca;
+    private boolean selecionada = false;
+    private static final Color corHighlight = Color.YELLOW;
+    private static final Color corSelecionada = Color.GREEN;
     private Color corFundo;
-    static final private Color corHighlight = Color.YELLOW;
 
     /**
      * Cria uma casa sem nenhuma das referências necessárias para o
@@ -50,9 +54,25 @@ public class JPanelCasa extends javax.swing.JPanel {
      * @param coluna Referência da coluna no tabuleiro.
      * @param peca Tipo da peça que essa casa deve exibir inicialmente.
      */
-    public JPanelCasa(Color cor, int linha, int coluna, TipoPeca peca) {
+    public JPanelCasa(Color cor, int linha, int coluna, TipoPecaGrafica peca) {
         this(cor, linha, coluna);
         this.peca = peca;
+    }
+
+    /**
+     * Marca esta casa como selecionada.
+     */
+    public void selecionar() {
+        selecionada = true;
+        this.setBackground(corSelecionada);
+    }
+
+    /**
+     * Marca esta casa como não selecionada.
+     */
+    public void deselecionar() {
+        selecionada = false;
+        this.setBackground(corFundo);
     }
 
     /**
@@ -60,8 +80,8 @@ public class JPanelCasa extends javax.swing.JPanel {
      *
      * @return Tipo da peça retirada.
      */
-    public TipoPeca retirarPeca() {
-        TipoPeca pecaRetirada = this.peca;
+    public TipoPecaGrafica retirarPeca() {
+        TipoPecaGrafica pecaRetirada = this.peca;
         this.peca = null;
         atualizarIconePeca();
         return pecaRetirada;
@@ -73,7 +93,7 @@ public class JPanelCasa extends javax.swing.JPanel {
      *
      * @param novaPeca Peça que será inserida dentro da casa.
      */
-    public void colocarPeca(TipoPeca novaPeca) {
+    public void colocarPeca(TipoPecaGrafica novaPeca) {
         this.peca = novaPeca;
         atualizarIconePeca();
     }
@@ -89,6 +109,18 @@ public class JPanelCasa extends javax.swing.JPanel {
         }
     }
 
+    public int getColuna() {
+        return coluna;
+    }
+
+    public int getLinha() {
+        return linha;
+    }
+
+    public TipoPecaGrafica getPeca() {
+        return peca;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +133,9 @@ public class JPanelCasa extends javax.swing.JPanel {
         jLabelPecaIcon = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 formMouseExited(evt);
             }
@@ -129,8 +164,18 @@ public class JPanelCasa extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        this.setBackground(corFundo);
+        if (selecionada) {
+            // Retorna a cor do fundo para a cor de seleção.
+            this.setBackground(corSelecionada);
+        } else {
+            // Retorna a cor do fundo para a sua cor normal.
+            this.setBackground(corFundo);
+        }
     }//GEN-LAST:event_formMouseExited
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        Controlador.INSTANCE.cliqueCasa(this);
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

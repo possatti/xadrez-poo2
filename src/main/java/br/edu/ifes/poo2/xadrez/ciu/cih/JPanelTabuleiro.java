@@ -31,37 +31,37 @@ public class JPanelTabuleiro extends javax.swing.JPanel {
      */
     public void posicionarPecas() {
         // Cria uma matriz com o estado com que o tabuleiro deve ser iniciado.
-        TipoPeca[][] tabuleiro = new TipoPeca[NUM_LINHAS][NUM_COLUNAS];
+        TipoPecaGrafica[][] tabuleiro = new TipoPecaGrafica[NUM_LINHAS][NUM_COLUNAS];
 
         // Posiciona peões brancos.
         for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
-            tabuleiro[1][coluna] = TipoPeca.PEAO_BRANCO;
+            tabuleiro[1][coluna] = TipoPecaGrafica.PEAO_BRANCO;
         }
 
         // Posiciona peões pretos.
         for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
-            tabuleiro[6][coluna] = TipoPeca.PEAO_PRETO;
+            tabuleiro[6][coluna] = TipoPecaGrafica.PEAO_PRETO;
         }
 
         // Posiciona outras peças brancas.
-        tabuleiro[0][0] = TipoPeca.TORRE_BRANCO;
-        tabuleiro[0][1] = TipoPeca.CAVALO_BRANCO;
-        tabuleiro[0][2] = TipoPeca.BISPO_BRANCO;
-        tabuleiro[0][3] = TipoPeca.DAMA_BRANCO;
-        tabuleiro[0][4] = TipoPeca.REI_BRANCO;
-        tabuleiro[0][5] = TipoPeca.BISPO_BRANCO;
-        tabuleiro[0][6] = TipoPeca.CAVALO_BRANCO;
-        tabuleiro[0][7] = TipoPeca.TORRE_BRANCO;
+        tabuleiro[0][0] = TipoPecaGrafica.TORRE_BRANCO;
+        tabuleiro[0][1] = TipoPecaGrafica.CAVALO_BRANCO;
+        tabuleiro[0][2] = TipoPecaGrafica.BISPO_BRANCO;
+        tabuleiro[0][3] = TipoPecaGrafica.DAMA_BRANCO;
+        tabuleiro[0][4] = TipoPecaGrafica.REI_BRANCO;
+        tabuleiro[0][5] = TipoPecaGrafica.BISPO_BRANCO;
+        tabuleiro[0][6] = TipoPecaGrafica.CAVALO_BRANCO;
+        tabuleiro[0][7] = TipoPecaGrafica.TORRE_BRANCO;
 
         // Posiciona outras peças pretas.
-        tabuleiro[7][0] = TipoPeca.TORRE_PRETO;
-        tabuleiro[7][1] = TipoPeca.CAVALO_PRETO;
-        tabuleiro[7][2] = TipoPeca.BISPO_PRETO;
-        tabuleiro[7][3] = TipoPeca.DAMA_PRETO;
-        tabuleiro[7][4] = TipoPeca.REI_PRETO;
-        tabuleiro[7][5] = TipoPeca.BISPO_PRETO;
-        tabuleiro[7][6] = TipoPeca.CAVALO_PRETO;
-        tabuleiro[7][7] = TipoPeca.TORRE_PRETO;
+        tabuleiro[7][0] = TipoPecaGrafica.TORRE_PRETO;
+        tabuleiro[7][1] = TipoPecaGrafica.CAVALO_PRETO;
+        tabuleiro[7][2] = TipoPecaGrafica.BISPO_PRETO;
+        tabuleiro[7][3] = TipoPecaGrafica.DAMA_PRETO;
+        tabuleiro[7][4] = TipoPecaGrafica.REI_PRETO;
+        tabuleiro[7][5] = TipoPecaGrafica.BISPO_PRETO;
+        tabuleiro[7][6] = TipoPecaGrafica.CAVALO_PRETO;
+        tabuleiro[7][7] = TipoPecaGrafica.TORRE_PRETO;
 
         // Atualiza o tabuleiro segundo o estado criado.
         atualizarTabuleiro(tabuleiro);
@@ -75,7 +75,7 @@ public class JPanelTabuleiro extends javax.swing.JPanel {
      * peças devem estar posicionadas onde no tabuleiro. Quando não há uma peça
      * naquela posição, 'null' deve ser usado na matriz..
      */
-    public void atualizarTabuleiro(TipoPeca[][] tabuleiro) {
+    public void atualizarTabuleiro(TipoPecaGrafica[][] tabuleiro) {
         for (int linha = 0; linha < NUM_LINHAS; linha++) {
             for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
                 // Muda o tipo da peça que está na casa, segundo a referência recebida.
