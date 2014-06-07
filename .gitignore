@@ -1,2 +1,5 @@
 # Maven build.
 target/
+
+# Arquivo de configurações do NetBeans.
+nbactions.xml
