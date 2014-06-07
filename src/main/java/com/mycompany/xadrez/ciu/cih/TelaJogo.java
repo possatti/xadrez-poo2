@@ -15,18 +15,11 @@ import javax.swing.JTextField;
  */
 public class TelaJogo extends javax.swing.JFrame {
 
-    JDialogCadastrarJogador jDialogCadastrarJogador;
-
     /**
      * Creates new form TelaJogo
      */
     public TelaJogo() {
         initComponents();
-        initDialogs();
-    }
-
-    private void initDialogs() {
-        jDialogCadastrarJogador = new JDialogCadastrarJogador(this, true);
     }
 
     /**
@@ -37,7 +30,6 @@ public class TelaJogo extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanelChat1 = new com.mycompany.xadrez.ciu.cih.JPanelChat();
         jPanelJogo1 = new com.mycompany.xadrez.ciu.cih.JPanelJogo();
