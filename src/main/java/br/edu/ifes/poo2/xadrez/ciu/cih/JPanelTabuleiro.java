@@ -6,6 +6,7 @@
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
 /**
+ * Painel que representa o tabuleiro na tela.
  *
  * @author possatti
  */
@@ -29,43 +30,67 @@ public class JPanelTabuleiro extends javax.swing.JPanel {
      * Posiciona as peças segundo a formação inicial do jogo.
      */
     public void posicionarPecas() {
+        // Cria uma matriz com o estado com que o tabuleiro deve ser iniciado.
+        TipoPeca[][] tabuleiro = new TipoPeca[NUM_LINHAS][NUM_COLUNAS];
+
         // Posiciona peões brancos.
         for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
-            casas[1][coluna].colocarPeca(TipoPeca.PEAO_BRANCO);
+            tabuleiro[1][coluna] = TipoPeca.PEAO_BRANCO;
         }
 
         // Posiciona peões pretos.
         for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
-            casas[6][coluna].colocarPeca(TipoPeca.PEAO_PRETO);
+            tabuleiro[6][coluna] = TipoPeca.PEAO_PRETO;
         }
 
         // Posiciona outras peças brancas.
-        casas[0][0].colocarPeca(TipoPeca.TORRE_BRANCO);
-        casas[0][1].colocarPeca(TipoPeca.CAVALO_BRANCO);
-        casas[0][2].colocarPeca(TipoPeca.BISPO_BRANCO);
-        casas[0][3].colocarPeca(TipoPeca.DAMA_BRANCO);
-        casas[0][4].colocarPeca(TipoPeca.REI_BRANCO);
-        casas[0][5].colocarPeca(TipoPeca.BISPO_BRANCO);
-        casas[0][6].colocarPeca(TipoPeca.CAVALO_BRANCO);
-        casas[0][7].colocarPeca(TipoPeca.TORRE_BRANCO);
+        tabuleiro[0][0] = TipoPeca.TORRE_BRANCO;
+        tabuleiro[0][1] = TipoPeca.CAVALO_BRANCO;
+        tabuleiro[0][2] = TipoPeca.BISPO_BRANCO;
+        tabuleiro[0][3] = TipoPeca.DAMA_BRANCO;
+        tabuleiro[0][4] = TipoPeca.REI_BRANCO;
+        tabuleiro[0][5] = TipoPeca.BISPO_BRANCO;
+        tabuleiro[0][6] = TipoPeca.CAVALO_BRANCO;
+        tabuleiro[0][7] = TipoPeca.TORRE_BRANCO;
 
         // Posiciona outras peças pretas.
-        casas[7][0].colocarPeca(TipoPeca.TORRE_PRETO);
-        casas[7][1].colocarPeca(TipoPeca.CAVALO_PRETO);
-        casas[7][2].colocarPeca(TipoPeca.BISPO_PRETO);
-        casas[7][3].colocarPeca(TipoPeca.DAMA_PRETO);
-        casas[7][4].colocarPeca(TipoPeca.REI_PRETO);
-        casas[7][5].colocarPeca(TipoPeca.BISPO_PRETO);
-        casas[7][6].colocarPeca(TipoPeca.CAVALO_PRETO);
-        casas[7][7].colocarPeca(TipoPeca.TORRE_PRETO);
+        tabuleiro[7][0] = TipoPeca.TORRE_PRETO;
+        tabuleiro[7][1] = TipoPeca.CAVALO_PRETO;
+        tabuleiro[7][2] = TipoPeca.BISPO_PRETO;
+        tabuleiro[7][3] = TipoPeca.DAMA_PRETO;
+        tabuleiro[7][4] = TipoPeca.REI_PRETO;
+        tabuleiro[7][5] = TipoPeca.BISPO_PRETO;
+        tabuleiro[7][6] = TipoPeca.CAVALO_PRETO;
+        tabuleiro[7][7] = TipoPeca.TORRE_PRETO;
+
+        // Atualiza o tabuleiro segundo o estado criado.
+        atualizarTabuleiro(tabuleiro);
+    }
+
+    /**
+     * Atualiza as casas do tabuleiro segundo o parâmetro, que informa o estado
+     * atual do tabuleiro.
+     *
+     * @param tabuleiro Estado atual do tabuleiro. É uma matriz que diz que
+     * peças devem estar posicionadas onde no tabuleiro. Quando não há uma peça
+     * naquela posição, 'null' deve ser usado na matriz..
+     */
+    public void atualizarTabuleiro(TipoPeca[][] tabuleiro) {
+        for (int linha = 0; linha < NUM_LINHAS; linha++) {
+            for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
+                // Muda o tipo da peça que está na casa, segundo a referência recebida.
+                casas[linha][coluna].colocarPeca(tabuleiro[linha][coluna]);
+            }
+        }
+
     }
 
     /**
      * Posiciona as casas dentro do tabuleiro.
      */
     private void initCasas() {
-        for (int linha = NUM_COLUNAS - 1; linha >= 0; linha--) {
-            for (int coluna = 0; coluna < NUM_LINHAS; coluna++) {
+        for (int linha = NUM_LINHAS - 1; linha >= 0; linha--) {
+            for (int coluna = 0; coluna < NUM_COLUNAS; coluna++) {
                 if ((linha + coluna) % 2 == 0) {
                     casas[linha][coluna] = CasaFactory.criarCasaBranca(linha, coluna);
                 } else {
