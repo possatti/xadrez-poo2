@@ -9,6 +9,19 @@ import java.util.Map;
 
 public class InteligenciaArtificial {
 
+    private InteligenciaArtificial() {
+
+    }
+
+    private static class InteligenciaArtificialSingletonHolder {
+
+        static InteligenciaArtificial instance = new InteligenciaArtificial();
+    }
+
+    public static InteligenciaArtificial getInstance() {
+        return InteligenciaArtificialSingletonHolder.instance;
+    }
+
     public String[] calcularJogada(Tabuleiro tabuleiro, Cor corJogador) {
         String[] jogada = new String[2];
         Map<String, Posicao> posicoes = tabuleiro.getPosicoes();
