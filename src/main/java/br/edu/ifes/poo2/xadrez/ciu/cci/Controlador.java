@@ -341,4 +341,28 @@ public enum Controlador {
             // TODO Atualizar o tabuleiro conforme necessário.
         }
     }
+
+    public void salvarPartida() {
+        // TODO salvar partida.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void salvarPartidaETerminar() {
+        // TODO salvar partida e termina-la.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void terminarPartidaSemSalvar() {
+        // Define uma mensagem de aviso ao usuário.
+        String title = "Terminar partida sem salvar";
+        String message = "Tem certeza de que deseja terminar a partida sem salva-la?";
+
+        // Lança uma caixa de diálogo ao usuário, pedindo uma confirmação.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+
+        // Se o jogador confirmar.
+        if (option == JOptionPane.YES_OPTION) {
+            // TODO Terminar a partida sem salvar.
+        }
+    }
 }

@@ -69,13 +69,28 @@ public class TelaJogo extends javax.swing.JFrame {
         });
         jMenuPartidas.add(jMenuItemMultiplayer);
 
-        jMenuItemSalvar.setText("Salvar partida atual");
+        jMenuItemSalvar.setText("Salvar partida");
+        jMenuItemSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalvarActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSalvar);
 
-        jMenuItemSalvarSair.setText("Salvar e sair");
+        jMenuItemSalvarSair.setText("Salvar partida e termina-la");
+        jMenuItemSalvarSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalvarSairActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSalvarSair);
 
-        jMenuItemSair.setText("Sair sem salvar");
+        jMenuItemSair.setText("Terminar partida sem salvar");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSair);
 
         jMenuBar1.add(jMenuPartidas);
@@ -169,6 +184,18 @@ public class TelaJogo extends javax.swing.JFrame {
     private void jMenuItemMultiplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMultiplayerActionPerformed
         Controlador.INSTANCE.iniciarMultiplayer();
     }//GEN-LAST:event_jMenuItemMultiplayerActionPerformed
+
+    private void jMenuItemSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalvarActionPerformed
+        Controlador.INSTANCE.salvarPartida();
+    }//GEN-LAST:event_jMenuItemSalvarActionPerformed
+
+    private void jMenuItemSalvarSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalvarSairActionPerformed
+        Controlador.INSTANCE.salvarPartidaETerminar();
+    }//GEN-LAST:event_jMenuItemSalvarSairActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        Controlador.INSTANCE.terminarPartidaSemSalvar();
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAjuda;

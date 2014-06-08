@@ -27,18 +27,27 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSalvar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salvar partida atual"/>
+                <Property name="text" type="java.lang.String" value="Salvar partida"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSalvarActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSalvarSair">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salvar e sair"/>
+                <Property name="text" type="java.lang.String" value="Salvar partida e termina-la"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSalvarSairActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSair">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sair sem salvar"/>
+                <Property name="text" type="java.lang.String" value="Terminar partida sem salvar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSairActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
