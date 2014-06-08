@@ -39,17 +39,13 @@ public class StrategyBispo extends StrategyPecaImpl {
 
         super.setVariaveis(posicaoAtual, posicaoAtual);
 
-        //Nordeste
         if (linhaNova > linhaAtual && colunaNova > colunaAtual) {
             caminho = getCaminhoNordeste();
-        } //Noroeste
-        else if (linhaNova > linhaAtual && colunaAtual > colunaNova) {
+        } else if (linhaNova > linhaAtual && colunaAtual > colunaNova) {
             caminho = getCaminhoNoroeste();
-        } //Sudoeste
-        else if (linhaAtual > linhaNova && colunaAtual > colunaNova) {
+        } else if (linhaAtual > linhaNova && colunaAtual > colunaNova) {
             caminho = getCaminhoSudoeste();
-        } //Sudeste
-        else if (linhaAtual > linhaNova && colunaNova > colunaAtual) {
+        } else if (linhaAtual > linhaNova && colunaNova > colunaAtual) {
             caminho = getCaminhoSudeste();
         } else {
             throw new RuntimeException("Não foi possível gerar um caminho reto para a peça selecionada.");

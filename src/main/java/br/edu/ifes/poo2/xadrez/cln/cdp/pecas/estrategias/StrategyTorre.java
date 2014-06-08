@@ -45,17 +45,13 @@ public class StrategyTorre extends StrategyPecaImpl {
 
         super.setVariaveis(posicaoAtual, novaPosicao);
 
-        //Norte
         if (colunaAtual == colunaNova && linhaAtual < linhaNova) {
             caminho = getCaminhoNorte();
-        } //Leste
-        else if (colunaAtual < colunaNova && linhaAtual == linhaNova) {
+        } else if (colunaAtual < colunaNova && linhaAtual == linhaNova) {
             caminho = getCaminhoLeste();
-        } //Sul
-        else if (colunaAtual == colunaNova && linhaAtual > linhaNova) {
+        } else if (colunaAtual == colunaNova && linhaAtual > linhaNova) {
             caminho = getCaminhoSul();
-        } //Oeste
-        else if (colunaAtual > colunaNova && linhaAtual == linhaNova) {
+        } else if (colunaAtual > colunaNova && linhaAtual == linhaNova) {
             caminho = getCaminhoOeste();
         } else {
             throw new RuntimeException("Não foi possível gerar um caminho reto para a peça selecionada.");
