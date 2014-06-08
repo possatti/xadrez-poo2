@@ -172,17 +172,7 @@ public class TelaJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCadastrarJogadorActionPerformed
 
     private void jMenuItemApagarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemApagarJogadorActionPerformed
-        // Abre o diálogo
-        JTextField jApelido = new JTextField();
-        Object[] message = {
-            "Apelido:", jApelido,};
-        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
-
-        // Captura as informações.
-        String apelido = jApelido.getText();
-
-        // TODO Grava os dados.
-        System.out.println(apelido);
+        Controlador.INSTANCE.apagarJogador();
     }//GEN-LAST:event_jMenuItemApagarJogadorActionPerformed
 
     private void jMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSobreActionPerformed

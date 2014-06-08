@@ -165,8 +165,8 @@ public enum Controlador {
     }
 
     /**
-     * Exibe um diálogo para alteração dos dados de um jogador. Se todos os dados
-     * forem fonecidos corretamente os dados cadastrados serão alterados.
+     * Exibe um diálogo para alteração dos dados de um jogador. Se todos os
+     * dados forem fonecidos corretamente os dados cadastrados serão alterados.
      */
     public void editarJogador() {
         // Define os dados que serão usados.
@@ -213,6 +213,33 @@ public enum Controlador {
             System.out.println(novoApelido);
             System.out.println(novoEmail);
             System.out.println(novoNome);
+        }
+    }
+
+    /**
+     * Exibe um diálogo para apagar o registro de algum jogador no banco de
+     * dados. Para identifica o jogador, o dado que será solicitado é o apelido
+     * do jogador, pois é único.
+     */
+    public void apagarJogador() {
+        // Define os dados que serão usados.
+        // TODO Usar um combobox para obter o apelido do jogador. O combobox deve
+        // ser preenchido com todos os apelidos cadastrados no banco.
+        JTextField jApelido = new JTextField();
+        String title = "Apagar um jogador";
+        Object[] message = {
+            "Apelido do jogador:", jApelido,};
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura o apelido do jogador selecionado.
+            String apelido = jApelido.getText();
+
+            // TODO Tentar deletar o jogador.
+            System.out.println(apelido);
         }
     }
 }
