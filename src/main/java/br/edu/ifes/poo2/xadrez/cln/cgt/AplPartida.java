@@ -5,35 +5,47 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.Partida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroBuilderImpl;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroDirector;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
+import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 
 public class AplPartida {
 
-	private InteligenciaArtificial inteligenciaArtificial;
+    private Partida partidaAtual;
 
-	private Partida partidaAtual;
+    private final InteligenciaArtificial inteligenciaArtificial;
 
-	private TabuleiroBuilderImpl tabuleiroBuilder;
+    private final TabuleiroBuilderImpl tabuleiroBuilder;
 
-	private TabuleiroDirector tabuleiroDirector;
+    private final TabuleiroDirector tabuleiroDirector;
 
-	private void fazerJogada() {
+    public AplPartida() {
+        this.inteligenciaArtificial = InteligenciaArtificial.getInstance();
+        this.tabuleiroBuilder = new TabuleiroBuilderImpl();
+        this.tabuleiroDirector = new TabuleiroDirector(tabuleiroBuilder);
+    }
 
-	}
+    private void fazerJogada() {
 
-	public void fazerJogada(String posicaoInicial, String posicaoFinal) {
+    }
 
-	}
+    public void fazerJogada(String posicaoInicial, String posicaoFinal) {
 
-	public void criarPartida(Jogador jogadorBranco, Jogador jogadorPreto) {
+    }
 
-	}
+    public void criarPartida(Jogador jogadorBranco, Jogador jogadorPreto) {
+        Tabuleiro novoTabuleiro;
 
-	public void getTabuleiro() {
+        tabuleiroDirector.criarTabuleiro();
+        novoTabuleiro = tabuleiroBuilder.getTabuleiro();
 
-	}
+        this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro);
+    }
 
-	public void carregarPartida(String id) {
+    public void getTabuleiro() {
 
-	}
+    }
+
+    public void carregarPartida(String id) {
+
+    }
 
 }
