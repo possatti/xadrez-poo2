@@ -5,12 +5,15 @@
  */
 package br.edu.ifes.poo2.xadrez.ciu.cci;
 
+import br.edu.ifes.poo2.xadrez.ciu.cih.CorPeca;
 import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
+import br.edu.ifes.poo2.xadrez.util.Validador;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  * Controla o aplicativo, fazendo intermédio entre o modelo de dados e a
@@ -113,6 +116,253 @@ public enum Controlador {
 
                 // TODO Deselecionar todas as casas.
             }
+        }
+    }
+
+    /**
+     * Exibe o diálogo para receber as informações de um novo jogador e, se tudo
+     * for informado corretamente, o jogador é cadastrado.
+     */
+    public void cadastrarJogador() {
+        // Define os dados que serão usados.
+        JTextField jApelido = new JTextField();
+        JTextField jEmail = new JTextField();
+        JTextField jNome = new JTextField();
+        String title = "Cadastrar novo jogador";
+        Object[] message = {
+            "Apelido:", jApelido,
+            "E-mail:", jEmail,
+            "Nome:", jNome,};
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura as informações fornecidas pelo usuário.
+            String apelido = jApelido.getText();
+            String email = jEmail.getText();
+            String nome = jNome.getText();
+
+            // Verificação dos dados
+            if (!apelido.matches(Validador.REGEX_APELIDO)) {
+                JOptionPane.showMessageDialog(null, "O campo do apelido foi preenchido incorretamente.");
+                return;
+            }
+            if (!email.matches(Validador.REGEX_EMAIL)) {
+                JOptionPane.showMessageDialog(null, "O campo de e-mail foi preenchido incorretamente.");
+                return;
+            }
+            if (!nome.matches(Validador.REGEX_NOME)) {
+                JOptionPane.showMessageDialog(null, "O campo do nome foi preenchido incorretamente.");
+                return;
+            }
+
+            // TODO Cadastrar os dados de jogador.
+            System.out.println(apelido);
+            System.out.println(email);
+            System.out.println(nome);
+        }
+    }
+
+    /**
+     * Exibe um diálogo para alteração dos dados de um jogador. Se todos os
+     * dados forem fonecidos corretamente os dados cadastrados serão alterados.
+     */
+    public void editarJogador() {
+        // Define os dados que serão usados.
+        // TODO Usar um combobox com todos os jogadores já cadastrados no campo do
+        // apelido atual.
+        JTextField jApelidoAtual = new JTextField();
+        JTextField jNovoApelido = new JTextField();
+        JTextField jNovoEmail = new JTextField();
+        JTextField jNovoNome = new JTextField();
+        String title = "Editar dados de um jogador";
+        Object[] message = {
+            "Apelido atual:", jApelidoAtual,
+            "Novo apelido:", jNovoApelido,
+            "Novo e-mail:", jNovoEmail,
+            "Novo nome:", jNovoNome,};
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura as informações fornecidas pelo usuário.
+            String apelidoAtual = jApelidoAtual.getText();
+            String novoApelido = jNovoApelido.getText();
+            String novoEmail = jNovoEmail.getText();
+            String novoNome = jNovoNome.getText();
+
+            // Verificação dos dados.
+            // TODO Verificar se realmente existe um jogador com o apelido atual.
+            if (!novoApelido.matches(Validador.REGEX_APELIDO)) {
+                JOptionPane.showMessageDialog(null, "O campo do apelido foi preenchido incorretamente.");
+                return;
+            }
+            if (!novoEmail.matches(Validador.REGEX_EMAIL)) {
+                JOptionPane.showMessageDialog(null, "O campo de e-mail foi preenchido incorretamente.");
+                return;
+            }
+            if (!novoNome.matches(Validador.REGEX_NOME)) {
+                JOptionPane.showMessageDialog(null, "O campo do nome foi preenchido incorretamente.");
+                return;
+            }
+
+            // TODO alterar os dados de jogador.
+            System.out.println(novoApelido);
+            System.out.println(novoEmail);
+            System.out.println(novoNome);
+        }
+    }
+
+    /**
+     * Exibe um diálogo para apagar o registro de algum jogador no banco de
+     * dados. Para identifica o jogador, o dado que será solicitado é o apelido
+     * do jogador, pois é único.
+     */
+    public void apagarJogador() {
+        // Define os dados que serão usados.
+        // TODO Usar um combobox para obter o apelido do jogador. O combobox deve
+        // ser preenchido com todos os apelidos cadastrados no banco.
+        JTextField jApelido = new JTextField();
+        String title = "Apagar um jogador";
+        Object[] message = {
+            "Apelido do jogador:", jApelido,};
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura o apelido do jogador selecionado.
+            String apelido = jApelido.getText();
+
+            // TODO Tentar deletar o jogador.
+            System.out.println(apelido);
+        }
+    }
+
+    /**
+     * Exibe o diálogo requerendo as informações necessárias para iniciar uma
+     * nova partida singleplayer e toma conta de inicia-la corretamente e fazer
+     * todas as preparações necessárias.
+     */
+    public void iniciarSingleplayer() {
+        // Opções
+        // TODO Pegar os jogadores do banco de dados mesmo.
+        String maquinas[] = {"Zeus"};
+        String jogadores[] = {"possatti", "phillipe"};
+        String cores[] = {
+            CorPeca.BRANCO.toString(),
+            CorPeca.PRETO.toString()
+        };
+
+        // Define os elementos de obtenção de dados do usuário.
+        JComboBox jJogador = new JComboBox(jogadores);
+        JComboBox jMaquina = new JComboBox(maquinas);
+        JComboBox jCorJogador = new JComboBox(cores);
+
+        // Organiza os elementos que irão aparecer.
+        String title = "Iniciar partida singleplayer";
+        Object[] message = {
+            "Jogador:", jJogador,
+            "Máquina", jMaquina,
+            "Cor do jogador:", jCorJogador
+        };
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura os dados do usuário.
+            String jogador = jJogador.getSelectedItem().toString();
+            String maquina = jMaquina.getSelectedItem().toString();
+            String cor = jCorJogador.getSelectedItem().toString();
+
+            // TODO Iniciar um novo jogo.
+            System.out.println(jogador);
+            System.out.println(maquina);
+            System.out.println(cor);
+
+            // TODO Atualizar o tabuleiro conforme necessário.
+        }
+    }
+
+    /**
+     * Exibe o diálogo requerendo as informações necessárias para iniciar uma
+     * nova partida multiplayer e toma conta de inicia-la corretamente e fazer
+     * todas as preparações necessárias.
+     */
+    public void iniciarMultiplayer() {
+        // Opções
+        // TODO Pegar os jogadores do banco de dados mesmo.
+        String jogadores[] = {"possatti", "phillipe"};
+        String cores[] = {
+            CorPeca.BRANCO.toString(),
+            CorPeca.PRETO.toString()
+        };
+
+        // Define os elementos de obtenção de dados do usuário.
+        JComboBox jJogador1 = new JComboBox(jogadores);
+        JComboBox jJogador2 = new JComboBox(jogadores);
+        JComboBox jCorJogador = new JComboBox(cores);
+
+        // Organiza os elementos que irão aparecer.
+        String title = "Iniciar partida multiplayer";
+        Object[] message = {
+            "Jogador das peças brancas:", jJogador1,
+            "jogador das peças pretas:", jJogador1
+        };
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura os dados do usuário.
+            String jogador1 = jJogador1.getSelectedItem().toString();
+            String jogador2 = jJogador2.getSelectedItem().toString();
+            String cor = jCorJogador.getSelectedItem().toString();
+
+            // Verifica se os dois não são o mesmo jogador.
+            if (jogador1.equals(jogador2)) {
+                JOptionPane.showMessageDialog(null, "Os dois jogadores indicados, não podem ser os mesmos.");
+                return;
+            }
+
+            // TODO Iniciar um novo jogo multiplayer.
+            System.out.println(jogador1);
+            System.out.println(jogador2);
+            System.out.println(cor);
+
+            // TODO Atualizar o tabuleiro conforme necessário.
+        }
+    }
+
+    public void salvarPartida() {
+        // TODO salvar partida.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void salvarPartidaETerminar() {
+        // TODO salvar partida e termina-la.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void terminarPartidaSemSalvar() {
+        // Define uma mensagem de aviso ao usuário.
+        String title = "Terminar partida sem salvar";
+        String message = "Tem certeza de que deseja terminar a partida sem salva-la?";
+
+        // Lança uma caixa de diálogo ao usuário, pedindo uma confirmação.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+
+        // Se o jogador confirmar.
+        if (option == JOptionPane.YES_OPTION) {
+            // TODO Terminar a partida sem salvar.
         }
     }
 }

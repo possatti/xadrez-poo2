@@ -5,6 +5,7 @@
  */
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
+import br.edu.ifes.poo2.xadrez.ciu.cci.Controlador;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -61,15 +62,35 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenuPartidas.add(jMenuItemSingleplayer);
 
         jMenuItemMultiplayer.setText("Nova partida multiplayer");
+        jMenuItemMultiplayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMultiplayerActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemMultiplayer);
 
-        jMenuItemSalvar.setText("Salvar partida atual");
+        jMenuItemSalvar.setText("Salvar partida");
+        jMenuItemSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalvarActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSalvar);
 
-        jMenuItemSalvarSair.setText("Salvar e sair");
+        jMenuItemSalvarSair.setText("Salvar partida e termina-la");
+        jMenuItemSalvarSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalvarSairActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSalvarSair);
 
-        jMenuItemSair.setText("Sair sem salvar");
+        jMenuItemSair.setText("Terminar partida sem salvar");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemSair);
 
         jMenuBar1.add(jMenuPartidas);
@@ -85,6 +106,11 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenujogadores.add(jMenuItemCadastrarJogador);
 
         jMenuItemEditarJogador.setText("Editar jogador");
+        jMenuItemEditarJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditarJogadorActionPerformed(evt);
+            }
+        });
         jMenujogadores.add(jMenuItemEditarJogador);
 
         jMenuItemApagarJogador.setText("Apagar jogador");
@@ -136,71 +162,40 @@ public class TelaJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemSingleplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSingleplayerActionPerformed
-        // Opções
-        String maquinas[] = {"Zeus"};
-        String jogadores[] = {"Possatti", "Phillipe"};
-        String cores[] = {
-            CorPeca.BRANCO.toString(),
-            CorPeca.PRETO.toString()
-        };
-
-        // Abre o diálogo de novo jogo
-        JComboBox jogador = new JComboBox(jogadores);
-        JComboBox maquina = new JComboBox(maquinas);
-        JComboBox corJogador = new JComboBox(cores);
-
-        Object[] message = {
-            "Jogador:", jogador,
-            "Máquina", maquina,
-            "Cor do jogador:", corJogador,};
-        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
-
-        // TODO Inicia o novo jogo.
-        System.out.println(jogador.getSelectedItem());
-        System.out.println(maquina.getSelectedItem());
-        System.out.println(corJogador.getSelectedItem());
+        Controlador.INSTANCE.iniciarSingleplayer();
     }//GEN-LAST:event_jMenuItemSingleplayerActionPerformed
 
     private void jMenuItemCadastrarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarJogadorActionPerformed
-        // Abre o diálogo de cadastro de jogador.
-        JTextField jApelido = new JTextField();
-        JTextField jEmail = new JTextField();
-        JTextField jNome = new JTextField();
-
-        Object[] message = {
-            "Apelido:", jApelido,
-            "E-mail:", jEmail,
-            "Nome:", jNome,};
-        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
-
-        // Captura as informações
-        String apelido = jApelido.getText();
-        String email = jEmail.getText();
-        String nome = jNome.getText();
-
-        // TODO Grava os dados.
-        System.out.println("apelido");
-        System.out.println("email");
-        System.out.println("nome");
+        Controlador.INSTANCE.cadastrarJogador();
     }//GEN-LAST:event_jMenuItemCadastrarJogadorActionPerformed
 
     private void jMenuItemApagarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemApagarJogadorActionPerformed
-        // Abre o diálogo
-        JTextField jApelido = new JTextField();
-        Object[] message = {
-            "Apelido:", jApelido,};
-        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
-
-        // Captura as informações.
-        String apelido = jApelido.getText();
-
-        // TODO Grava os dados.
-        System.out.println(apelido);
+        Controlador.INSTANCE.apagarJogador();
     }//GEN-LAST:event_jMenuItemApagarJogadorActionPerformed
 
     private void jMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSobreActionPerformed
         new JDialogSobre(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItemSobreActionPerformed
+
+    private void jMenuItemEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarJogadorActionPerformed
+        Controlador.INSTANCE.editarJogador();
+    }//GEN-LAST:event_jMenuItemEditarJogadorActionPerformed
+
+    private void jMenuItemMultiplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMultiplayerActionPerformed
+        Controlador.INSTANCE.iniciarMultiplayer();
+    }//GEN-LAST:event_jMenuItemMultiplayerActionPerformed
+
+    private void jMenuItemSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalvarActionPerformed
+        Controlador.INSTANCE.salvarPartida();
+    }//GEN-LAST:event_jMenuItemSalvarActionPerformed
+
+    private void jMenuItemSalvarSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalvarSairActionPerformed
+        Controlador.INSTANCE.salvarPartidaETerminar();
+    }//GEN-LAST:event_jMenuItemSalvarSairActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        Controlador.INSTANCE.terminarPartidaSemSalvar();
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAjuda;
