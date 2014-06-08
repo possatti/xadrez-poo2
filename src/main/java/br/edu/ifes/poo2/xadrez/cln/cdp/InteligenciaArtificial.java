@@ -9,9 +9,8 @@ import java.util.Map;
 
 public class InteligenciaArtificial {
 
-    public String[] calcularJogada(Partida partida, Cor corJogador) {
+    public String[] calcularJogada(Tabuleiro tabuleiro, Cor corJogador) {
         String[] jogada = new String[2];
-        Tabuleiro tabuleiro = partida.getTabuleiro();
         Map<String, Posicao> posicoes = tabuleiro.getPosicoes();
         List<Peca> pecas = tabuleiro.getPecas(corJogador);
 
