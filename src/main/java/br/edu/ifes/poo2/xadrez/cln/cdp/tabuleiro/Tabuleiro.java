@@ -10,11 +10,13 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.fabrica.FabricaPecasImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import lombok.Getter;
 import lombok.Setter;
 
 public class Tabuleiro {
 
     @Setter
+    @Getter
     private Map<String, Posicao> posicoes;
 
     /**
@@ -49,7 +51,7 @@ public class Tabuleiro {
      * @param cor A cor das peças.
      * @return Uma lista com todas as peças da cor dada.
      */
-    private List<Peca> getPecas(Cor cor) {
+    public List<Peca> getPecas(Cor cor) {
         List<Peca> pecas = new ArrayList<>();
 
         for (Map.Entry<String, Posicao> entry : posicoes.entrySet()) {
