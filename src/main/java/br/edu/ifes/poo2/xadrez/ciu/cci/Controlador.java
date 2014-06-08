@@ -163,4 +163,56 @@ public enum Controlador {
             System.out.println(nome);
         }
     }
+
+    /**
+     * Exibe um diálogo para alteração dos dados de um jogador. Se todos os dados
+     * forem fonecidos corretamente os dados cadastrados serão alterados.
+     */
+    public void editarJogador() {
+        // Define os dados que serão usados.
+        // TODO Usar um combobox com todos os jogadores já cadastrados no campo do
+        // apelido atual.
+        JTextField jApelidoAtual = new JTextField();
+        JTextField jNovoApelido = new JTextField();
+        JTextField jNovoEmail = new JTextField();
+        JTextField jNovoNome = new JTextField();
+        String title = "Editar dados de um jogador";
+        Object[] message = {
+            "Apelido atual:", jApelidoAtual,
+            "Novo apelido:", jNovoApelido,
+            "Novo e-mail:", jNovoEmail,
+            "Novo nome:", jNovoNome,};
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura as informações fornecidas pelo usuário.
+            String apelidoAtual = jApelidoAtual.getText();
+            String novoApelido = jNovoApelido.getText();
+            String novoEmail = jNovoEmail.getText();
+            String novoNome = jNovoNome.getText();
+
+            // Verificação dos dados.
+            // TODO Verificar se realmente existe um jogador com o apelido atual.
+            if (!novoApelido.matches(Validador.REGEX_APELIDO)) {
+                JOptionPane.showMessageDialog(null, "O campo do apelido foi preenchido incorretamente.");
+                return;
+            }
+            if (!novoEmail.matches(Validador.REGEX_EMAIL)) {
+                JOptionPane.showMessageDialog(null, "O campo de e-mail foi preenchido incorretamente.");
+                return;
+            }
+            if (!novoNome.matches(Validador.REGEX_NOME)) {
+                JOptionPane.showMessageDialog(null, "O campo do nome foi preenchido incorretamente.");
+                return;
+            }
+
+            // TODO alterar os dados de jogador.
+            System.out.println(novoApelido);
+            System.out.println(novoEmail);
+            System.out.println(novoNome);
+        }
+    }
 }

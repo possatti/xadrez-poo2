@@ -86,6 +86,11 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenujogadores.add(jMenuItemCadastrarJogador);
 
         jMenuItemEditarJogador.setText("Editar jogador");
+        jMenuItemEditarJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditarJogadorActionPerformed(evt);
+            }
+        });
         jMenujogadores.add(jMenuItemEditarJogador);
 
         jMenuItemApagarJogador.setText("Apagar jogador");
@@ -183,6 +188,10 @@ public class TelaJogo extends javax.swing.JFrame {
     private void jMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSobreActionPerformed
         new JDialogSobre(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItemSobreActionPerformed
+
+    private void jMenuItemEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarJogadorActionPerformed
+        Controlador.INSTANCE.editarJogador();
+    }//GEN-LAST:event_jMenuItemEditarJogadorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAjuda;
