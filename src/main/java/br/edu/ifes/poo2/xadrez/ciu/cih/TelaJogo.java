@@ -100,6 +100,11 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenuAjuda.setText("Ajuda");
 
         jMenuItemSobre.setText("Sobre");
+        jMenuItemSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSobreActionPerformed(evt);
+            }
+        });
         jMenuAjuda.add(jMenuItemSobre);
 
         jMenuBar1.add(jMenuAjuda);
@@ -192,6 +197,10 @@ public class TelaJogo extends javax.swing.JFrame {
         // TODO Grava os dados.
         System.out.println(apelido);
     }//GEN-LAST:event_jMenuItemApagarJogadorActionPerformed
+
+    private void jMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSobreActionPerformed
+        new JDialogSobre(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItemSobreActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAjuda;
