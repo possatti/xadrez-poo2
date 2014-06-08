@@ -9,8 +9,10 @@ import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
+import br.edu.ifes.poo2.xadrez.util.Validador;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  * Controla o aplicativo, fazendo intermédio entre o modelo de dados e a
@@ -113,6 +115,52 @@ public enum Controlador {
 
                 // TODO Deselecionar todas as casas.
             }
+        }
+    }
+
+    /**
+     * Exibe o diálogo para receber as informações de um novo jogador e, se tudo
+     * for informado corretamente, o jogador é cadastrado.
+     */
+    public void cadastrarJogador() {
+        // Define os dados que serão usados.
+        JTextField jApelido = new JTextField();
+        JTextField jEmail = new JTextField();
+        JTextField jNome = new JTextField();
+        String title = "Cadastrar novo jogador";
+        Object[] message = {
+            "Apelido:", jApelido,
+            "E-mail:", jEmail,
+            "Nome:", jNome,};
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura as informações fornecidas pelo usuário.
+            String apelido = jApelido.getText();
+            String email = jEmail.getText();
+            String nome = jNome.getText();
+
+            // Verificação dos dados
+            if (!apelido.matches(Validador.REGEX_APELIDO)) {
+                JOptionPane.showMessageDialog(null, "O campo do apelido foi preenchido incorretamente.");
+                return;
+            }
+            if (!email.matches(Validador.REGEX_EMAIL)) {
+                JOptionPane.showMessageDialog(null, "O campo de e-mail foi preenchido incorretamente.");
+                return;
+            }
+            if (!nome.matches(Validador.REGEX_NOME)) {
+                JOptionPane.showMessageDialog(null, "O campo do nome foi preenchido incorretamente.");
+                return;
+            }
+
+            // TODO Cadastrar os dados de jogador.
+            System.out.println(apelido);
+            System.out.println(email);
+            System.out.println(nome);
         }
     }
 }

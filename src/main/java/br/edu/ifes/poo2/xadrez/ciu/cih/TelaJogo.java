@@ -5,6 +5,7 @@
  */
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
+import br.edu.ifes.poo2.xadrez.ciu.cci.Controlador;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -162,26 +163,7 @@ public class TelaJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSingleplayerActionPerformed
 
     private void jMenuItemCadastrarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarJogadorActionPerformed
-        // Abre o diálogo de cadastro de jogador.
-        JTextField jApelido = new JTextField();
-        JTextField jEmail = new JTextField();
-        JTextField jNome = new JTextField();
-
-        Object[] message = {
-            "Apelido:", jApelido,
-            "E-mail:", jEmail,
-            "Nome:", jNome,};
-        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
-
-        // Captura as informações
-        String apelido = jApelido.getText();
-        String email = jEmail.getText();
-        String nome = jNome.getText();
-
-        // TODO Grava os dados.
-        System.out.println("apelido");
-        System.out.println("email");
-        System.out.println("nome");
+        Controlador.INSTANCE.cadastrarJogador();
     }//GEN-LAST:event_jMenuItemCadastrarJogadorActionPerformed
 
     private void jMenuItemApagarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemApagarJogadorActionPerformed
