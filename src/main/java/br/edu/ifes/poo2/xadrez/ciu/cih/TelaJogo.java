@@ -62,6 +62,11 @@ public class TelaJogo extends javax.swing.JFrame {
         jMenuPartidas.add(jMenuItemSingleplayer);
 
         jMenuItemMultiplayer.setText("Nova partida multiplayer");
+        jMenuItemMultiplayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMultiplayerActionPerformed(evt);
+            }
+        });
         jMenuPartidas.add(jMenuItemMultiplayer);
 
         jMenuItemSalvar.setText("Salvar partida atual");
@@ -160,6 +165,10 @@ public class TelaJogo extends javax.swing.JFrame {
     private void jMenuItemEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarJogadorActionPerformed
         Controlador.INSTANCE.editarJogador();
     }//GEN-LAST:event_jMenuItemEditarJogadorActionPerformed
+
+    private void jMenuItemMultiplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMultiplayerActionPerformed
+        Controlador.INSTANCE.iniciarMultiplayer();
+    }//GEN-LAST:event_jMenuItemMultiplayerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAjuda;

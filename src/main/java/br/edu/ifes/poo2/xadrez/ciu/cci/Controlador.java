@@ -259,12 +259,13 @@ public enum Controlador {
             CorPeca.PRETO.toString()
         };
 
-        // Abre o diálogo de novo jogo
+        // Define os elementos de obtenção de dados do usuário.
         JComboBox jJogador = new JComboBox(jogadores);
         JComboBox jMaquina = new JComboBox(maquinas);
         JComboBox jCorJogador = new JComboBox(cores);
 
         // Organiza os elementos que irão aparecer.
+        String title = "Iniciar partida singleplayer";
         Object[] message = {
             "Jogador:", jJogador,
             "Máquina", jMaquina,
@@ -272,10 +273,11 @@ public enum Controlador {
         };
 
         // Lança o diálogo.
-        int option = JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
 
         // Se o usuário clicou em OK.
         if (option == JOptionPane.OK_OPTION) {
+            // Captura os dados do usuário.
             String jogador = jJogador.getSelectedItem().toString();
             String maquina = jMaquina.getSelectedItem().toString();
             String cor = jCorJogador.getSelectedItem().toString();
@@ -283,6 +285,57 @@ public enum Controlador {
             // TODO Iniciar um novo jogo.
             System.out.println(jogador);
             System.out.println(maquina);
+            System.out.println(cor);
+
+            // TODO Atualizar o tabuleiro conforme necessário.
+        }
+    }
+
+    /**
+     * Exibe o diálogo requerendo as informações necessárias para iniciar uma
+     * nova partida multiplayer e toma conta de inicia-la corretamente e fazer
+     * todas as preparações necessárias.
+     */
+    public void iniciarMultiplayer() {
+        // Opções
+        // TODO Pegar os jogadores do banco de dados mesmo.
+        String jogadores[] = {"possatti", "phillipe"};
+        String cores[] = {
+            CorPeca.BRANCO.toString(),
+            CorPeca.PRETO.toString()
+        };
+
+        // Define os elementos de obtenção de dados do usuário.
+        JComboBox jJogador1 = new JComboBox(jogadores);
+        JComboBox jJogador2 = new JComboBox(jogadores);
+        JComboBox jCorJogador = new JComboBox(cores);
+
+        // Organiza os elementos que irão aparecer.
+        String title = "Iniciar partida multiplayer";
+        Object[] message = {
+            "Jogador das peças brancas:", jJogador1,
+            "jogador das peças pretas:", jJogador1
+        };
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            // Captura os dados do usuário.
+            String jogador1 = jJogador1.getSelectedItem().toString();
+            String jogador2 = jJogador2.getSelectedItem().toString();
+            String cor = jCorJogador.getSelectedItem().toString();
+
+            // Verifica se os dois não são o mesmo jogador.
+            if (jogador1.equals(jogador2)) {
+                JOptionPane.showMessageDialog(null, "Os dois jogadores indicados, não podem ser os mesmos.");
+                return;
+            }
+
+            // TODO Iniciar um novo jogo multiplayer.
+            System.out.println(jogador1);
+            System.out.println(jogador2);
             System.out.println(cor);
 
             // TODO Atualizar o tabuleiro conforme necessário.
