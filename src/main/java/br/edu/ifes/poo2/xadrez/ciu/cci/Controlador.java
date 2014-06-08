@@ -5,6 +5,7 @@
  */
 package br.edu.ifes.poo2.xadrez.ciu.cci;
 
+import br.edu.ifes.poo2.xadrez.ciu.cih.CorPeca;
 import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
@@ -240,6 +241,51 @@ public enum Controlador {
 
             // TODO Tentar deletar o jogador.
             System.out.println(apelido);
+        }
+    }
+
+    /**
+     * Exibe o diálogo requerendo as informações necessárias para iniciar uma
+     * nova partida singleplayer e toma conta de inicia-la corretamente e fazer
+     * todas as preparações necessárias.
+     */
+    public void iniciarSingleplayer() {
+        // Opções
+        // TODO Pegar os jogadores do banco de dados mesmo.
+        String maquinas[] = {"Zeus"};
+        String jogadores[] = {"possatti", "phillipe"};
+        String cores[] = {
+            CorPeca.BRANCO.toString(),
+            CorPeca.PRETO.toString()
+        };
+
+        // Abre o diálogo de novo jogo
+        JComboBox jJogador = new JComboBox(jogadores);
+        JComboBox jMaquina = new JComboBox(maquinas);
+        JComboBox jCorJogador = new JComboBox(cores);
+
+        // Organiza os elementos que irão aparecer.
+        Object[] message = {
+            "Jogador:", jJogador,
+            "Máquina", jMaquina,
+            "Cor do jogador:", jCorJogador
+        };
+
+        // Lança o diálogo.
+        int option = JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
+
+        // Se o usuário clicou em OK.
+        if (option == JOptionPane.OK_OPTION) {
+            String jogador = jJogador.getSelectedItem().toString();
+            String maquina = jMaquina.getSelectedItem().toString();
+            String cor = jCorJogador.getSelectedItem().toString();
+
+            // TODO Iniciar um novo jogo.
+            System.out.println(jogador);
+            System.out.println(maquina);
+            System.out.println(cor);
+
+            // TODO Atualizar o tabuleiro conforme necessário.
         }
     }
 }

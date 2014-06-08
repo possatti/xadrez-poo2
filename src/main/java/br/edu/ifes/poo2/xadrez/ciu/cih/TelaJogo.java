@@ -142,29 +142,7 @@ public class TelaJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemSingleplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSingleplayerActionPerformed
-        // Opções
-        String maquinas[] = {"Zeus"};
-        String jogadores[] = {"Possatti", "Phillipe"};
-        String cores[] = {
-            CorPeca.BRANCO.toString(),
-            CorPeca.PRETO.toString()
-        };
-
-        // Abre o diálogo de novo jogo
-        JComboBox jogador = new JComboBox(jogadores);
-        JComboBox maquina = new JComboBox(maquinas);
-        JComboBox corJogador = new JComboBox(cores);
-
-        Object[] message = {
-            "Jogador:", jogador,
-            "Máquina", maquina,
-            "Cor do jogador:", corJogador,};
-        JOptionPane.showConfirmDialog(null, message, "Iniciar partida singleplayer", JOptionPane.OK_CANCEL_OPTION);
-
-        // TODO Inicia o novo jogo.
-        System.out.println(jogador.getSelectedItem());
-        System.out.println(maquina.getSelectedItem());
-        System.out.println(corJogador.getSelectedItem());
+        Controlador.INSTANCE.iniciarSingleplayer();
     }//GEN-LAST:event_jMenuItemSingleplayerActionPerformed
 
     private void jMenuItemCadastrarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarJogadorActionPerformed
