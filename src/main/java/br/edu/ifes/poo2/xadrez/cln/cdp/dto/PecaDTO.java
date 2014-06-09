@@ -2,13 +2,15 @@ package br.edu.ifes.poo2.xadrez.cln.cdp.dto;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  * @author phillipe
  */
-@Data
+@Getter
+@Setter
 public class PecaDTO {
 
     private TipoPeca tipoPeca;
@@ -17,4 +19,8 @@ public class PecaDTO {
     public PecaDTO() {
     }
 
+    public PecaDTO(TipoPeca tipoPeca, Cor cor) {
+        this.tipoPeca = tipoPeca;
+        this.cor = cor;
+    }
 }
