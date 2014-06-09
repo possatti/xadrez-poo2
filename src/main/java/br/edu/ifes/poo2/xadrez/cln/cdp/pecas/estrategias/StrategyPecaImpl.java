@@ -34,7 +34,7 @@ public abstract class StrategyPecaImpl implements StrategyPeca {
     protected boolean haPecas(List<String> caminho, Tabuleiro tabuleiro) {
 
         for (String idPosicao : caminho) {
-            if (tabuleiro.getPosicao(idPosicao).existePeca() == true) {
+            if (tabuleiro.getPosicao(idPosicao).existePeca()) {
                 return true;
             }
         }

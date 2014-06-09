@@ -35,9 +35,9 @@ public class StrategyBispo extends StrategyPecaImpl {
      * @return Uma lista com todos o caminho diagonal de uma posição a outra.
      */
     public List<String> caminhoDiagonal(Posicao posicaoAtual, Posicao novaPosicao) {
-        List<String> caminho;
+        List<String> caminho = new ArrayList<>();
 
-        super.setVariaveis(posicaoAtual, posicaoAtual);
+        super.setVariaveis(posicaoAtual, novaPosicao);
 
         if (linhaNova > linhaAtual && colunaNova > colunaAtual) {
             caminho = getCaminhoNordeste();
@@ -47,8 +47,6 @@ public class StrategyBispo extends StrategyPecaImpl {
             caminho = getCaminhoSudoeste();
         } else if (linhaAtual > linhaNova && colunaNova > colunaAtual) {
             caminho = getCaminhoSudeste();
-        } else {
-            throw new RuntimeException("Não foi possível gerar um caminho reto para a peça selecionada.");
         }
 
         return caminho;
