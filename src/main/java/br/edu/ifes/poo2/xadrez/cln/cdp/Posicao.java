@@ -7,8 +7,8 @@ import lombok.Getter;
 @Getter
 public class Posicao {
 
-    final private String id;
-    final private Tabuleiro tabuleiro;
+    private final String id;
+    private final Tabuleiro tabuleiro;
     private Peca peca;
 
     public Posicao(String id, Tabuleiro tabuleiro) {

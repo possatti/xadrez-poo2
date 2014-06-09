@@ -15,7 +15,7 @@ public class InteligenciaArtificial {
 
     private static class InteligenciaArtificialSingletonHolder {
 
-        static InteligenciaArtificial instance = new InteligenciaArtificial();
+        private static InteligenciaArtificial instance = new InteligenciaArtificial();
     }
 
     public static InteligenciaArtificial getInstance() {
