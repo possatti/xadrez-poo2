@@ -11,8 +11,8 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 
 /**
- * Possui métodos para conversão de dados que sejam úteis para fazer a
- * comunicação entre o controlador e a camada de gestão de tarefas.
+ * Fornece uma série de métodos para facilitar a conversão de dados entre o
+ * controlador e a camada de gestão de tarefas.
  *
  * @author possatti
  */
@@ -93,7 +93,7 @@ public class Conversor {
         if (dto == null) {
             return null;
         }
-        
+
         // Pega os dados do DTO.
         Cor corPeca = dto.getCor();
         TipoPeca tipoPeca = dto.getTipoPeca();
@@ -101,7 +101,7 @@ public class Conversor {
 
         // Converte para a peça gráfica.
         if (corPeca == Cor.BRANCO) {
-            if (tipoPeca == tipoPeca.TORRE) {
+            if (tipoPeca == TipoPeca.TORRE) {
                 pecaGrafica = TipoPecaGrafica.TORRE_BRANCO;
             } else if (tipoPeca == TipoPeca.CAVALO) {
                 pecaGrafica = TipoPecaGrafica.CAVALO_BRANCO;
@@ -129,7 +129,7 @@ public class Conversor {
                 pecaGrafica = TipoPecaGrafica.PEAO_PRETO;
             }
         }
-        
+
         return pecaGrafica;
     }
 }
