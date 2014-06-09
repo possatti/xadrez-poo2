@@ -37,10 +37,6 @@ public class AplPartida {
         MOVIMENTO, CAPTURA, PROMOCAO, RMAIOR, RMENOR, XEQUE, XMATE;
     }
 
-    private void fazerJogada() {
-
-    }
-
     public void fazerJogada(String posicaoInicialId, String posicaoFinalId) {
         Operacao tipoJogada;
         Posicao posicaoInicial, posicaoFinal;
@@ -60,18 +56,10 @@ public class AplPartida {
                 posicaoFinal.setPeca(posicaoInicial.getPeca());
                 break;
             case RMAIOR:
-                linhaAtual = posicaoInicial.getId().charAt(1);
-                rei = posicaoInicial.getPeca();
-                torre = getPosicaoTabuleiro("a" + linhaAtual).getPeca();
-                getPosicaoTabuleiro("c" + linhaAtual).setPeca(rei);
-                getPosicaoTabuleiro("d" + linhaAtual).setPeca(torre);
+                this.executarRoqueMaior(posicaoInicial);
                 break;
             case RMENOR:
-                linhaAtual = posicaoInicial.getId().charAt(1);
-                rei = posicaoInicial.getPeca();
-                torre = this.getPosicaoTabuleiro("h" + linhaAtual).getPeca();
-                this.getPosicaoTabuleiro("g" + linhaAtual).setPeca(rei);
-                this.getPosicaoTabuleiro("f" + linhaAtual).setPeca(torre);
+                this.executarRoqueMenor(posicaoInicial);
                 break;
             case XEQUE:
                 posicaoFinal = getPosicaoTabuleiro(posicaoFinalId);
@@ -81,11 +69,27 @@ public class AplPartida {
                 break;
             case PROMOCAO:
                 break;
+            default:
+                break;
         }
     }
 
-    private void executaMovimento(Posicao posicaoInicial, Posicao posicaoFinal) {
+    private void executarRoqueMaior(Posicao posicaoInicial) {
+        char linhaAtual = posicaoInicial.getId().charAt(1);
 
+        Peca rei = posicaoInicial.getPeca();
+        Peca torre = getPosicaoTabuleiro("a" + linhaAtual).getPeca();
+        getPosicaoTabuleiro("c" + linhaAtual).setPeca(rei);
+        getPosicaoTabuleiro("d" + linhaAtual).setPeca(torre);
+    }
+
+    private void executarRoqueMenor(Posicao posicaoInicial) {
+        char linhaAtual = posicaoInicial.getId().charAt(1);
+
+        Peca rei = posicaoInicial.getPeca();
+        Peca torre = getPosicaoTabuleiro("h" + linhaAtual).getPeca();
+        this.getPosicaoTabuleiro("g" + linhaAtual).setPeca(rei);
+        this.getPosicaoTabuleiro("f" + linhaAtual).setPeca(torre);
     }
 
     private Operacao identificarOperacao(String posicaoInicialId, String posicaoFinalId) {

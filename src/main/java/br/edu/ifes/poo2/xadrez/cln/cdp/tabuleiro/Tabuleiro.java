@@ -90,7 +90,11 @@ public class Tabuleiro {
 
         return andouDuasCasas
                 && !novaPosicao.existePeca()
-                && posicaoCaptura.existePeca()
+                && validarPosicaoCapturaEnPassant(posicaoCaptura);
+    }
+
+    private boolean validarPosicaoCapturaEnPassant(Posicao posicaoCaptura) {
+        return posicaoCaptura.existePeca()
                 && posicaoCaptura.getPeca().getTipoPeca() == TipoPeca.PEAO
                 && posicaoCaptura.getPeca().moveuUmaVez();
     }
@@ -247,12 +251,9 @@ public class Tabuleiro {
             caminho.add("" + ((char) (colunhaAtual - nCaminho)) + linhaAtual);
         }
 
-        return (posicaoAtual.existePeca()
-                && !posicaoAtual.getPeca().jaMovimentou()
-                && posicaoAtual.getPeca().getTipoPeca() == TipoPeca.REI)
+        return validarPosicaoAtualRoque(posicaoAtual)
                 && haPeca(caminho)
-                && posicaoTorre.existePeca()
-                && !posicaoTorre.getPeca().jaMovimentou();
+                && validarPosicaoTorreRoque(posicaoTorre);
     }
 
     /**
@@ -271,11 +272,19 @@ public class Tabuleiro {
             caminho.add("" + ((char) (colunhaAtual + nCaminho)) + linhaAtual);
         }
 
-        return (posicaoAtual.existePeca()
-                && !posicaoAtual.getPeca().jaMovimentou()
-                && posicaoAtual.getPeca().getTipoPeca() == TipoPeca.REI)
+        return validarPosicaoAtualRoque(posicaoAtual)
                 && haPeca(caminho)
-                && posicaoTorre.existePeca()
+                && validarPosicaoTorreRoque(posicaoTorre);
+    }
+
+    private boolean validarPosicaoAtualRoque(Posicao posicaoAtual) {
+        return posicaoAtual.existePeca()
+                && !posicaoAtual.getPeca().jaMovimentou()
+                && posicaoAtual.getPeca().getTipoPeca() == TipoPeca.REI;
+    }
+
+    private boolean validarPosicaoTorreRoque(Posicao posicaoTorre) {
+        return posicaoTorre.existePeca()
                 && !posicaoTorre.getPeca().jaMovimentou();
     }
 

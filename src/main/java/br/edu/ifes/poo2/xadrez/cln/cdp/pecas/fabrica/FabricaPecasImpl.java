@@ -69,6 +69,8 @@ public class FabricaPecasImpl implements FabricaPecas {
             case TORRE:
                 peca.setEstrategia(new StrategyTorre());
                 break;
+            default:
+                break;
         }
     }
 

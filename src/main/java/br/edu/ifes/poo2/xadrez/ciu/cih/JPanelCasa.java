@@ -19,8 +19,8 @@ public class JPanelCasa extends javax.swing.JPanel {
     private int coluna;
     private TipoPecaGrafica peca;
     private boolean selecionada = false;
-    private static final Color corHighlight = Color.YELLOW;
-    private static final Color corSelecionada = Color.GREEN;
+    private static final Color CORHIGHLIGHT = Color.YELLOW;
+    private static final Color CORSELECIONADA = Color.GREEN;
     private Color corFundo;
 
     /**
@@ -64,7 +64,7 @@ public class JPanelCasa extends javax.swing.JPanel {
      */
     public void selecionar() {
         selecionada = true;
-        this.setBackground(corSelecionada);
+        this.setBackground(CORSELECIONADA);
     }
 
     /**
@@ -160,13 +160,13 @@ public class JPanelCasa extends javax.swing.JPanel {
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         // Coloca a cor de destaque.
-        this.setBackground(corHighlight);
+        this.setBackground(CORHIGHLIGHT);
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         if (selecionada) {
             // Retorna a cor do fundo para a cor de seleção.
-            this.setBackground(corSelecionada);
+            this.setBackground(CORSELECIONADA);
         } else {
             // Retorna a cor do fundo para a sua cor normal.
             this.setBackground(corFundo);
