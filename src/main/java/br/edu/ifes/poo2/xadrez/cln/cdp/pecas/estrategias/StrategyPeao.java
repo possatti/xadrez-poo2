@@ -24,18 +24,16 @@ public class StrategyPeao extends StrategyPecaImpl {
          * peão anda duas ou uma casa, caso contrário.
          */
         if (pecaAtual.jaMovimentou()) {
-            switch (pecaAtual.getCor()) {
-                case BRANCO:
-                    return (linhasAndadas == 1 && colunaAtual == colunaNova && !novaPosicao.existePeca());
-                case PRETO:
-                    return (linhasAndadas == -1 && colunaAtual == colunaNova && !novaPosicao.existePeca());
+            if (pecaAtual.getCor() == Cor.BRANCO) {
+                return (linhasAndadas == 1 && colunaAtual == colunaNova && !novaPosicao.existePeca());
+            } else if (pecaAtual.getCor() == Cor.PRETO) {
+                return (linhasAndadas == -1 && colunaAtual == colunaNova && !novaPosicao.existePeca());
             }
         } else {
-            switch (pecaAtual.getCor()) {
-                case BRANCO:
-                    return ((linhasAndadas == 2 || linhasAndadas == 1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro()));
-                case PRETO:
-                    return ((linhasAndadas == -2 || linhasAndadas == -1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro()));
+            if (pecaAtual.getCor() == Cor.BRANCO) {
+                return ((linhasAndadas == 2 || linhasAndadas == 1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro()));
+            } else if (pecaAtual.getCor() == Cor.PRETO) {
+                return ((linhasAndadas == -2 || linhasAndadas == -1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro()));
             }
         }
 

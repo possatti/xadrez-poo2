@@ -108,7 +108,7 @@ public enum Controlador {
                 TipoPeca peca = (TipoPeca) jPecas.getSelectedItem();
 
                 // TODO Executar jogada com promoção.
-                System.out.println(peca);
+                //System.out.println(peca);
 
                 // TODO Deselecionar todas as casas.
             } else {
@@ -159,9 +159,9 @@ public enum Controlador {
             }
 
             // TODO Cadastrar os dados de jogador.
-            System.out.println(apelido);
-            System.out.println(email);
-            System.out.println(nome);
+            //System.out.println(apelido);
+            //System.out.println(email);
+            //System.out.println(nome);
         }
     }
 
@@ -211,9 +211,9 @@ public enum Controlador {
             }
 
             // TODO alterar os dados de jogador.
-            System.out.println(novoApelido);
-            System.out.println(novoEmail);
-            System.out.println(novoNome);
+            //System.out.println(novoApelido);
+            //System.out.println(novoEmail);
+            //System.out.println(novoNome);
         }
     }
 
@@ -240,7 +240,7 @@ public enum Controlador {
             String apelido = jApelido.getText();
 
             // TODO Tentar deletar o jogador.
-            System.out.println(apelido);
+            //System.out.println(apelido);
         }
     }
 
@@ -252,9 +252,9 @@ public enum Controlador {
     public void iniciarSingleplayer() {
         // Opções
         // TODO Pegar os jogadores do banco de dados mesmo.
-        String maquinas[] = {"Zeus"};
-        String jogadores[] = {"possatti", "phillipe"};
-        String cores[] = {
+        String[] maquinas = {"Zeus"};
+        String[] jogadores = {"possatti", "phillipe"};
+        String[] cores = {
             CorPeca.BRANCO.toString(),
             CorPeca.PRETO.toString()
         };
@@ -283,9 +283,9 @@ public enum Controlador {
             String cor = jCorJogador.getSelectedItem().toString();
 
             // TODO Iniciar um novo jogo.
-            System.out.println(jogador);
-            System.out.println(maquina);
-            System.out.println(cor);
+            //System.out.println(jogador);
+            //System.out.println(maquina);
+            //System.out.println(cor);
 
             // TODO Atualizar o tabuleiro conforme necessário.
         }
@@ -299,8 +299,8 @@ public enum Controlador {
     public void iniciarMultiplayer() {
         // Opções
         // TODO Pegar os jogadores do banco de dados mesmo.
-        String jogadores[] = {"possatti", "phillipe"};
-        String cores[] = {
+        String[] jogadores = {"possatti", "phillipe"};
+        String[] cores = {
             CorPeca.BRANCO.toString(),
             CorPeca.PRETO.toString()
         };
@@ -334,9 +334,9 @@ public enum Controlador {
             }
 
             // TODO Iniciar um novo jogo multiplayer.
-            System.out.println(jogador1);
-            System.out.println(jogador2);
-            System.out.println(cor);
+            //System.out.println(jogador1);
+            //System.out.println(jogador2);
+            //System.out.println(cor);
 
             // TODO Atualizar o tabuleiro conforme necessário.
         }

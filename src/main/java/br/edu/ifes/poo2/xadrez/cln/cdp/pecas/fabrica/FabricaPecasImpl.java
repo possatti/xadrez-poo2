@@ -73,13 +73,10 @@ public class FabricaPecasImpl implements FabricaPecas {
     }
 
     private void addToMap(Cor cor, Peca peca) {
-        switch (cor) {
-            case BRANCO:
-                prototiposPecasBrancas.put(peca.getTipoPeca(), peca);
-                break;
-            case PRETO:
-                prototiposPecasPretas.put(peca.getTipoPeca(), peca);
-                break;
+        if (cor == Cor.BRANCO) {
+            prototiposPecasBrancas.put(peca.getTipoPeca(), peca);
+        } else if (cor == Cor.PRETO) {
+            prototiposPecasPretas.put(peca.getTipoPeca(), peca);
         }
     }
 

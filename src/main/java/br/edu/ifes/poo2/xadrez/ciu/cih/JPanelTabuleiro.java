@@ -15,7 +15,7 @@ public class JPanelTabuleiro extends javax.swing.JPanel {
     public static final int NUM_LINHAS = 8;
     public static final int NUM_COLUNAS = 8;
 
-    private JPanelCasa casas[][] = new JPanelCasa[NUM_LINHAS][NUM_COLUNAS];
+    private JPanelCasa[][] casas = new JPanelCasa[NUM_LINHAS][NUM_COLUNAS];
 
     /**
      * Creates new form JPanelTabuleiro

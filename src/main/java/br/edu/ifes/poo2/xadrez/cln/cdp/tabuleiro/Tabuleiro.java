@@ -80,15 +80,12 @@ public class Tabuleiro {
 
         peaoAtual = posicaoAtual.getPeca();
 
-        switch (peaoAtual.getCor()) {
-            case BRANCO:
-                posicaoCaptura = this.getPosicao("" + novaColuna + ((char) (novaLinha - 1)));
-                andouDuasCasas = posicaoCaptura != null && posicaoCaptura.getId().charAt(1) == '5';
-                break;
-            case PRETO:
-                posicaoCaptura = this.getPosicao("" + novaColuna + ((char) (novaLinha + 1)));
-                andouDuasCasas = posicaoCaptura != null && posicaoCaptura.getId().charAt(1) == '4';
-                break;
+        if (peaoAtual.getCor() == Cor.BRANCO) {
+            posicaoCaptura = this.getPosicao("" + novaColuna + ((char) (novaLinha - 1)));
+            andouDuasCasas = posicaoCaptura != null && posicaoCaptura.getId().charAt(1) == '5';
+        } else if (peaoAtual.getCor() == Cor.PRETO) {
+            posicaoCaptura = this.getPosicao("" + novaColuna + ((char) (novaLinha + 1)));
+            andouDuasCasas = posicaoCaptura != null && posicaoCaptura.getId().charAt(1) == '4';
         }
 
         return andouDuasCasas
