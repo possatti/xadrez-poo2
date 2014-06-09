@@ -13,6 +13,6 @@ import lombok.Setter;
 @Setter
 public class PecaDTO {
 
-    TipoPeca tipoPeca;
-    Cor cor;
+    private TipoPeca tipoPeca;
+    private Cor cor;
 }
