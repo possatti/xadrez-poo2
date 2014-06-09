@@ -135,8 +135,8 @@ public class AplPartida {
         this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro);
     }
 
-    public void getTabuleiro() {
-
+    public Tabuleiro getTabuleiro() {
+        return this.partidaAtual.getTabuleiro();
     }
 
     public void carregarPartida(String id) {
