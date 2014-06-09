@@ -2,8 +2,6 @@ package br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
-import static br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor.BRANCO;
-import static br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor.PRETO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +13,10 @@ public class StrategyPeao extends StrategyPecaImpl {
         List<String> caminho;
         Peca pecaAtual = posicaoAnterior.getPeca();
         caminho = criarCaminho(pecaAtual.getCor());
-        int linhasAndadas = linhaNova - linhaAtual;
+        int linhasAndadas;
 
         super.setVariaveis(posicaoAnterior, novaPosicao);
+        linhasAndadas = linhaNova - linhaAtual;
 
         /**
          * Se não for o primeiro movimento, então o Peão anda apenas uma casa. O

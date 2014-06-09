@@ -184,7 +184,7 @@ public class Tabuleiro {
             boolean posicaoAmeacada = false;
             for (Peca peca : pecas) {
                 if (peca.validarMovimento(posicaoEscape) || peca.validarMovimentoCaptura(posicaoEscape)) {
-                    posicaoAmeacada = posicaoAmeacada || true;
+                    posicaoAmeacada = true;
                 }
             }
             isXequeMate = isXequeMate && posicaoAmeacada;
@@ -291,7 +291,7 @@ public class Tabuleiro {
     private boolean haPeca(List<String> caminho) {
 
         for (String idPosicao : caminho) {
-            if (this.getPosicao(idPosicao).existePeca() == true) {
+            if (this.getPosicao(idPosicao).existePeca()) {
                 return true;
             }
         }
