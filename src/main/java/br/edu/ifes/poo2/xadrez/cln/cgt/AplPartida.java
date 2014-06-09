@@ -6,9 +6,12 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroBuilderImpl;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroDirector;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
+import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 import br.edu.ifes.poo2.xadrez.util.exceptions.PosicaoInvalidaException;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 
 public class AplPartida {
 
@@ -20,10 +23,13 @@ public class AplPartida {
 
     private final TabuleiroDirector tabuleiroDirector;
 
+    private final Mapper mapper;
+
     public AplPartida() {
         this.inteligenciaArtificial = InteligenciaArtificial.getInstance();
         this.tabuleiroBuilder = new TabuleiroBuilderImpl();
         this.tabuleiroDirector = new TabuleiroDirector(tabuleiroBuilder);
+        this.mapper = DozerBeanMapperSingletonWrapper.getInstance();
     }
 
     private enum Operacao {
@@ -135,8 +141,20 @@ public class AplPartida {
         this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro);
     }
 
-    public Tabuleiro getTabuleiro() {
-        return this.partidaAtual.getTabuleiro();
+    public PecaDTO[][] getTabuleiro() {
+        PecaDTO[][] tabuleiro = new PecaDTO[8][8];
+
+        int coluna = 0;
+        for (char colunaChar = 'a'; colunaChar < 'i'; colunaChar++) {
+            int linha = 0;
+            for (char linhaChar = '1'; linhaChar < 9; linhaChar++) {
+                tabuleiro[coluna][linha] = mapper.map(this.partidaAtual.getTabuleiro().getPosicao("" + colunaChar + linhaChar).getPeca(), PecaDTO.class);
+                linha++;
+            }
+            coluna++;
+        }
+
+        return tabuleiro;
     }
 
     public void carregarPartida(String id) {
