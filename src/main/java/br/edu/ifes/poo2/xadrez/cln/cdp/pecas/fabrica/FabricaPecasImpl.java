@@ -15,10 +15,10 @@ import java.util.HashMap;
 
 public class FabricaPecasImpl implements FabricaPecas {
 
-    private Map<TipoPeca, Peca> prototiposPecasBrancas;
-    private Map<TipoPeca, Peca> prototiposPecasPretas;
+    private final Map<TipoPeca, Peca> prototiposPecasBrancas;
+    private final Map<TipoPeca, Peca> prototiposPecasPretas;
 
-    private void FabricaPeca() {
+    private FabricaPecasImpl() {
         prototiposPecasBrancas = new HashMap<>();
         prototiposPecasPretas = new HashMap<>();
     }
