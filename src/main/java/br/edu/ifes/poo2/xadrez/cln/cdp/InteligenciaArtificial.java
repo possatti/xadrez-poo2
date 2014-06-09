@@ -15,7 +15,7 @@ public class InteligenciaArtificial {
 
     private static class InteligenciaArtificialSingletonHolder {
 
-        private static final InteligenciaArtificial instance = new InteligenciaArtificial();
+        private static final InteligenciaArtificial INSTANCE = new InteligenciaArtificial();
 
         private InteligenciaArtificialSingletonHolder() {
 
@@ -23,7 +23,7 @@ public class InteligenciaArtificial {
     }
 
     public static InteligenciaArtificial getInstance() {
-        return InteligenciaArtificialSingletonHolder.instance;
+        return InteligenciaArtificialSingletonHolder.INSTANCE;
     }
 
     public String[] calcularJogada(Tabuleiro tabuleiro, Cor corJogador) {
@@ -35,12 +35,11 @@ public class InteligenciaArtificial {
             Posicao posicao = entry.getValue();
             for (Peca peca : pecas) {
                 //Verificamos se é um movimento possível.
-                if (peca.validarMovimento(posicao) && !tabuleiro.isXeque(peca.getPosicao(), posicao)) {
+                if (movimentoPossivel(peca, posicao, tabuleiro)) {
                     jogada[0] = peca.getPosicao().getId();
                     jogada[1] = posicao.getId();
                     //Verificamos se é uma captura possível.
-                } else if ((peca.validarMovimentoCaptura(posicao) && posicao.getPeca().getTipoPeca() != TipoPeca.REI)
-                        || tabuleiro.isEnPassant(peca.getPosicao(), posicao)) {
+                } else if (capturaPossivel(peca, posicao, tabuleiro)) {
                     jogada[1] = posicao.getId();
                     jogada[0] = peca.getPosicao().getId();
                     //Verificado se é um Roque maior.
@@ -62,6 +61,15 @@ public class InteligenciaArtificial {
             }
         }
         return jogada;
+    }
+
+    private boolean capturaPossivel(Peca peca, Posicao posicao, Tabuleiro tabuleiro) {
+        return (peca.validarMovimentoCaptura(posicao) && posicao.getPeca().getTipoPeca() != TipoPeca.REI)
+                || tabuleiro.isEnPassant(peca.getPosicao(), posicao);
+    }
+
+    private boolean movimentoPossivel(Peca peca, Posicao posicao, Tabuleiro tabuleiro) {
+        return peca.validarMovimento(posicao) && !tabuleiro.isXeque(peca.getPosicao(), posicao);
     }
 
 }
