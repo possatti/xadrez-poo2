@@ -1,5 +1,6 @@
 package br.edu.ifes.poo2.xadrez.cln.cdp;
 
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import java.util.Map;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
@@ -27,10 +28,12 @@ public class Partida {
 
     private TipoPartida tipoPartida;
 
-    public Partida(Jogador jogadorBranco, Jogador jogadorPreto, Tabuleiro tabuleiro) {
+    public Partida(Jogador jogadorBranco, Jogador jogadorPreto, Tabuleiro tabuleiro, TipoPartida tipoPartida) {
         this.jogadorBranco = jogadorBranco;
         this.jogadorPreto = jogadorPreto;
         this.tabuleiro = tabuleiro;
+        this.tipoPartida = tipoPartida;
+        this.jogadorDaVez = this.jogadorBranco;
         this.pecasCapturadas = new HashMap<>();
         this.pontuacao = new HashMap<>();
         this.pecasCapturadas.put(jogadorPreto, new ArrayList<Peca>());
@@ -39,16 +42,13 @@ public class Partida {
 
     public void addPecaCapturada(Peca peca) {
         Jogador jogador;
-        switch (peca.getCor()) {
-            case BRANCO:
-                jogador = this.jogadorBranco;
-                break;
-            case PRETO:
-                jogador = this.jogadorPreto;
-                break;
-            default:
-                throw new RuntimeException();
+
+        if (peca.getCor() == Cor.BRANCO) {
+            jogador = this.jogadorBranco;
+        } else {
+            jogador = this.jogadorPreto;
         }
+
         pecasCapturadas.get(jogador).add(peca);
     }
 

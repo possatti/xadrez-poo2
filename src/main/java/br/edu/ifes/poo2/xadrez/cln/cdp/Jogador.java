@@ -11,4 +11,7 @@ public class Jogador {
 
     private int pontuacao;
 
+    public Jogador(String nome) {
+        this.nome = nome;
+    }
 }

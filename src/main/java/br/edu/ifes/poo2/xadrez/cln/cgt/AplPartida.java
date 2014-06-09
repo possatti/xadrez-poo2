@@ -6,6 +6,7 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroBuilderImpl;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroDirector;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
+import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
@@ -136,13 +137,13 @@ public class AplPartida {
         return this.partidaAtual.getTabuleiro().getPosicao(posicao);
     }
 
-    public void criarPartida(Jogador jogadorBranco, Jogador jogadorPreto) {
+    public void criarPartida(Jogador jogadorBranco, Jogador jogadorPreto, TipoPartida tipoPartida) {
         Tabuleiro novoTabuleiro;
 
         tabuleiroDirector.criarTabuleiro();
         novoTabuleiro = tabuleiroBuilder.getTabuleiro();
 
-        this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro);
+        this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro, tipoPartida);
     }
 
     public PecaDTO[][] getTabuleiro() {
