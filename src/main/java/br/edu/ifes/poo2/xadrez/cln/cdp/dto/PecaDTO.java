@@ -15,4 +15,10 @@ public class PecaDTO {
 
     private TipoPeca tipoPeca;
     private Cor cor;
+
+    public PecaDTO(TipoPeca tipoPeca, Cor cor) {
+        this.tipoPeca = tipoPeca;
+        this.cor = cor;
+    }
+
 }
