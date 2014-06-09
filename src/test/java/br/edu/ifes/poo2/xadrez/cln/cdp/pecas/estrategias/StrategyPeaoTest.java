@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
@@ -47,8 +42,11 @@ public class StrategyPeaoTest {
         Assert.assertTrue(peaoBranco.validarMovimento(tab.getPosicao("c4")));
         Assert.assertFalse(peaoBranco.validarMovimento(tab.getPosicao("c5")));
 
-        tab.getPosicao("c3").setPeca(peaoBranco);
+        tab.getPosicao("d6").setPeca(peaoPreto);
+        Assert.assertTrue(peaoPreto.validarMovimento(tab.getPosicao("d5")));
+        Assert.assertFalse(peaoPreto.validarMovimento(tab.getPosicao("d4")));
 
+        tab.getPosicao("c3").setPeca(peaoBranco);
         Assert.assertFalse(peaoBranco.validarMovimento(tab.getPosicao("c5")));
         Assert.assertTrue(peaoBranco.validarMovimento(tab.getPosicao("c4")));
     }
@@ -66,6 +64,16 @@ public class StrategyPeaoTest {
         Assert.assertTrue(peaoPreto.validarMovimentoCaptura(tab.getPosicao("e6")));
         Assert.assertTrue(peaoPreto.validarMovimentoCaptura(tab.getPosicao("c6")));
         Assert.assertFalse(peaoPreto.validarMovimentoCaptura(tab.getPosicao("d6")));
+
+        before();
+
+        tab.getPosicao("b3").setPeca(tab.getPosicao("b7").getPeca());
+        tab.getPosicao("d3").setPeca(tab.getPosicao("d7").getPeca());
+        tab.getPosicao("c3").setPeca(tab.getPosicao("c7").getPeca());
+
+        Assert.assertTrue(peaoBranco.validarMovimentoCaptura(tab.getPosicao("b3")));
+        Assert.assertTrue(peaoBranco.validarMovimentoCaptura(tab.getPosicao("d3")));
+        Assert.assertFalse(peaoBranco.validarMovimentoCaptura(tab.getPosicao("c3")));
 
     }
 }

@@ -24,19 +24,17 @@ public class StrategyPeao extends StrategyPecaImpl {
          */
         if (pecaAtual.jaMovimentou()) {
             if (pecaAtual.getCor() == Cor.BRANCO) {
-                return (linhasAndadas == 1 && colunaAtual == colunaNova && !novaPosicao.existePeca());
-            } else if (pecaAtual.getCor() == Cor.PRETO) {
-                return (linhasAndadas == -1 && colunaAtual == colunaNova && !novaPosicao.existePeca());
+                return linhasAndadas == 1 && colunaAtual == colunaNova && !novaPosicao.existePeca();
+            } else {
+                return linhasAndadas == -1 && colunaAtual == colunaNova && !novaPosicao.existePeca();
             }
         } else {
             if (pecaAtual.getCor() == Cor.BRANCO) {
-                return ((linhasAndadas == 2 || linhasAndadas == 1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro()));
-            } else if (pecaAtual.getCor() == Cor.PRETO) {
-                return ((linhasAndadas == -2 || linhasAndadas == -1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro()));
+                return (linhasAndadas == 2 || linhasAndadas == 1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro());
+            } else {
+                return (linhasAndadas == -2 || linhasAndadas == -1) && colunaAtual == colunaNova && !haPecas(caminho, posicaoAnterior.getTabuleiro());
             }
         }
-
-        return false;
     }
 
     /**
