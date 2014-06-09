@@ -41,7 +41,7 @@ public class StrategyTorre extends StrategyPecaImpl {
      * @return Uma lista com todos o caminho reto de uma posição a outra.
      */
     public List<String> caminhoReto(Posicao posicaoAtual, Posicao novaPosicao) {
-        List<String> caminho;
+        List<String> caminho = new ArrayList<>();
 
         super.setVariaveis(posicaoAtual, novaPosicao);
 
@@ -53,8 +53,6 @@ public class StrategyTorre extends StrategyPecaImpl {
             caminho = getCaminhoSul();
         } else if (colunaAtual > colunaNova && linhaAtual == linhaNova) {
             caminho = getCaminhoOeste();
-        } else {
-            throw new RuntimeException("Não foi possível gerar um caminho reto para a peça selecionada.");
         }
 
         return caminho;

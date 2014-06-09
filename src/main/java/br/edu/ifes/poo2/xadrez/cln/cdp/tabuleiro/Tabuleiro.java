@@ -73,8 +73,8 @@ public class Tabuleiro {
         char novaColuna = novaPosicao.getId().charAt(0);
         char novaLinha = novaPosicao.getId().charAt(1);
 
-        if (!contemPeao(novaPosicao)
-                || estaAndandoUmaColuna(posicaoAtual, novaPosicao)) {
+        if (contemPeao(novaPosicao)
+                || !estaAndandoUmaColuna(posicaoAtual, novaPosicao)) {
             return false;
         }
 
@@ -117,7 +117,7 @@ public class Tabuleiro {
      */
     public boolean isXeque(Posicao posicaoAtual, Posicao posicaoFinal) {
         Cor corAtual = posicaoAtual.getPeca().getCor();
-        Cor corAdversaria;
+        Cor corAdversaria = null;
         Peca copiaPecaAtual;
         boolean reiEmPerigo;
 
@@ -127,16 +127,10 @@ public class Tabuleiro {
             return false;
         }
 
-        switch (corAtual) {
-            case BRANCO:
-                corAdversaria = Cor.PRETO;
-                break;
-            case PRETO:
-                corAdversaria = Cor.BRANCO;
-                break;
-            default:
-                corAdversaria = null;
-                break;
+        if (corAtual == Cor.BRANCO) {
+            corAdversaria = Cor.PRETO;
+        } else if (corAtual == Cor.PRETO) {
+            corAdversaria = Cor.BRANCO;
         }
 
         // Aqui verifico se o rei está em perigo.
@@ -244,7 +238,7 @@ public class Tabuleiro {
     public boolean isRoqueMaior(Posicao posicaoAtual) {
         char linhaAtual = posicaoAtual.getId().charAt(1);
         char colunhaAtual = posicaoAtual.getId().charAt(0);
-        Posicao posicaoTorre = this.getPosicao("1" + linhaAtual);
+        Posicao posicaoTorre = this.getPosicao("a" + linhaAtual);
         List<String> caminho = new ArrayList<>();
 
         for (int nCaminho = 1; nCaminho < 3; nCaminho++) {
@@ -252,7 +246,7 @@ public class Tabuleiro {
         }
 
         return validarPosicaoAtualRoque(posicaoAtual)
-                && haPeca(caminho)
+                && !haPeca(caminho)
                 && validarPosicaoTorreRoque(posicaoTorre);
     }
 
@@ -265,7 +259,7 @@ public class Tabuleiro {
     public boolean isRoqueMenor(Posicao posicaoAtual) {
         char linhaAtual = posicaoAtual.getId().charAt(1);
         char colunhaAtual = posicaoAtual.getId().charAt(0);
-        Posicao posicaoTorre = this.getPosicao("8" + linhaAtual);
+        Posicao posicaoTorre = this.getPosicao("h" + linhaAtual);
         List<String> caminho = new ArrayList<>();
 
         for (int nCaminho = 1; nCaminho < 3; nCaminho++) {
@@ -273,7 +267,7 @@ public class Tabuleiro {
         }
 
         return validarPosicaoAtualRoque(posicaoAtual)
-                && haPeca(caminho)
+                && !haPeca(caminho)
                 && validarPosicaoTorreRoque(posicaoTorre);
     }
 

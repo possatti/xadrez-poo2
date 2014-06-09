@@ -26,6 +26,10 @@ public class FabricaPecasImpl implements FabricaPecas {
     private static class FabricaPecasSingletonHolder {
 
         static FabricaPecasImpl instance = new FabricaPecasImpl();
+
+        private FabricaPecasSingletonHolder() {
+
+        }
     }
 
     public static FabricaPecas getInstance() {
