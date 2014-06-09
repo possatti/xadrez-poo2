@@ -10,6 +10,7 @@ import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
+import br.edu.ifes.poo2.xadrez.cln.cgt.AplPartida;
 import br.edu.ifes.poo2.xadrez.util.Validador;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -26,7 +27,10 @@ public enum Controlador {
     INSTANCE;
 
     /* Indica a casa que foi clicada na interface */
-    private JPanelCasa primeiraCasaClicada;
+    private JPanelCasa casaSelecionada;
+
+    /* APL que controla as partidas. */
+    private AplPartida aplPartida = new AplPartida();
 
     /**
      * Inicia a aplicação.
@@ -65,28 +69,46 @@ public enum Controlador {
     }
 
     /**
+     * Marca uma casa do tabuleiro gráfico como selecionada.
+     *
+     * @param casa Casa que será marcada.
+     */
+    public void selecionarCasa(JPanelCasa casa) {
+        // Deixa a casa selecionada.
+        casa.selecionar();
+
+        // Guarda a casa que foi clicada
+        casaSelecionada = casa;
+    }
+
+    /**
+     * Desmarca uma casa do tabuleiro gráfico como selecionada.
+     *
+     * @param casa Casa que será desmarcada.
+     */
+    public void deselecionarCasa(JPanelCasa casa) {
+        // Desfaça a seleção da casa.
+        casa.deselecionar();
+
+        // Remove a referência a casa que anteriormente estava clicada.
+        casaSelecionada = null;
+    }
+
+    /**
      * Processa os cliques dados as casas gráficas do tabuleiro.
      *
      * @param casaClicada A casa que no tabuleiro foi clicada.
      */
     public void cliqueCasa(JPanelCasa casaClicada) {
-        if (primeiraCasaClicada == null) {
-            // Deixa a casa selecionada.
-            casaClicada.selecionar();
-
-            // Guarda a casa que foi clicada
-            primeiraCasaClicada = casaClicada;
-        } else if (primeiraCasaClicada == casaClicada) {
-            // Desfaça a seleção da casa.
-            casaClicada.deselecionar();
-
-            // Remove a referência a casa que anteriormente estava clicada.
-            primeiraCasaClicada = null;
+        if (casaSelecionada == null) {
+            selecionarCasa(casaClicada);
+        } else if (casaSelecionada == casaClicada) {
+            deselecionarCasa(casaClicada);
         } else {
             // Se for um peão, e a segunda casa clicada for do outro lado do tabuleiro.
-            if ((primeiraCasaClicada.getPeca() == TipoPecaGrafica.PEAO_BRANCO
+            if ((casaSelecionada.getPeca() == TipoPecaGrafica.PEAO_BRANCO
                     && casaClicada.getLinha() == 7)
-                    || (primeiraCasaClicada.getPeca() == TipoPecaGrafica.PEAO_PRETO
+                    || (casaSelecionada.getPeca() == TipoPecaGrafica.PEAO_PRETO
                     && casaClicada.getLinha() == 0)) {
 
                 // Cria um ComboBox com as peças para as quais o peão pode ser promovido.
@@ -94,7 +116,8 @@ public enum Controlador {
                     TipoPeca.BISPO,
                     TipoPeca.CAVALO,
                     TipoPeca.RAINHA,
-                    TipoPeca.TORRE};
+                    TipoPeca.TORRE
+                };
                 JComboBox<TipoPeca> jPecas = new JComboBox<>(items);
 
                 // Define os elementos que irão para o diálogo.
@@ -108,13 +131,20 @@ public enum Controlador {
                 TipoPeca peca = (TipoPeca) jPecas.getSelectedItem();
 
                 // TODO Executar jogada com promoção.
-                System.out.println(peca);
-
                 // TODO Deselecionar todas as casas.
             } else {
-                // TODO Executar jogada sem promoção.
+                // Separa os dados da jogada como a APL espera.
+                String origem = Conversor.converterPosicao(casaSelecionada.getLinha(), casaSelecionada.getColuna());
+                String destino = Conversor.converterPosicao(casaClicada.getLinha(), casaClicada.getColuna());
 
-                // TODO Deselecionar todas as casas.
+                // Executa jogada sem promoção.
+                aplPartida.fazerJogada(origem, destino);
+
+                // Deseleciona todas a casa de origem no tabuleiro.
+                deselecionarCasa(casaSelecionada);
+
+                // Atualiza o tabuleiro.
+                atualizarTabuleiro();
             }
         }
     }
@@ -373,5 +403,14 @@ public enum Controlador {
         if (option == JOptionPane.YES_OPTION) {
             // TODO Terminar a partida sem salvar.
         }
+    }
+
+    /**
+     * Atualiza o tabuleiro que está representado graficamente, com a
+     * correspondência do que realmente está dentro do jogo.
+     */
+    public void atualizarTabuleiro() {
+        // TODO Implementar método.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
