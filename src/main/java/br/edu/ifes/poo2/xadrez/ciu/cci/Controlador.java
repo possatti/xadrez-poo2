@@ -342,16 +342,25 @@ public enum Controlador {
         }
     }
 
+    /**
+     * Persiste a partida, para que ela possa ser continuada em outro momento.
+     */
     public void salvarPartida() {
         // TODO salvar partida.
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Salva a partida em andamento e em seguida a encerra.
+     */
     public void salvarPartidaETerminar() {
         // TODO salvar partida e termina-la.
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Sai da partida atual, sem salvar o progresso.
+     */
     public void terminarPartidaSemSalvar() {
         // Define uma mensagem de aviso ao usuário.
         String title = "Terminar partida sem salvar";
