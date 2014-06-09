@@ -9,6 +9,7 @@ import br.edu.ifes.poo2.xadrez.ciu.cih.CorPeca;
 import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
+import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 import br.edu.ifes.poo2.xadrez.cln.cgt.AplPartida;
 import br.edu.ifes.poo2.xadrez.util.Validador;
@@ -30,7 +31,10 @@ public enum Controlador {
     private JPanelCasa casaSelecionada;
 
     /* APL que controla as partidas. */
-    private AplPartida aplPartida = new AplPartida();
+    private final AplPartida aplPartida = new AplPartida();
+
+    /* Tela do jogo */
+    private TelaJogo telaJogo;
 
     /**
      * Inicia a aplicação.
@@ -63,7 +67,8 @@ public enum Controlador {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new TelaJogo().setVisible(true);
+                telaJogo = new TelaJogo();
+                telaJogo.setVisible(true);
             }
         });
     }
@@ -131,7 +136,6 @@ public enum Controlador {
                 TipoPeca peca = (TipoPeca) jPecas.getSelectedItem();
 
                 // TODO Executar jogada com promoção.
-
                 // TODO Deselecionar todas as casas.
             } else {
                 // Separa os dados da jogada como a APL espera.
@@ -317,7 +321,6 @@ public enum Controlador {
             //System.out.println(jogador);
             //System.out.println(maquina);
             //System.out.println(cor);
-
             // TODO Atualizar o tabuleiro conforme necessário.
         }
     }
@@ -368,7 +371,6 @@ public enum Controlador {
             //System.out.println(jogador1);
             //System.out.println(jogador2);
             //System.out.println(cor);
-
             // TODO Atualizar o tabuleiro conforme necessário.
         }
     }
@@ -411,7 +413,13 @@ public enum Controlador {
      * correspondência do que realmente está dentro do jogo.
      */
     public void atualizarTabuleiro() {
-        // TODO Implementar método.
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Pega o estado atual do tabuleiro no modelo.
+        PecaDTO[][] tabuleiroModelo = aplPartida.getTabuleiro();
+
+        // Converte para a forma como o ambiente gráfico usa o tabuleiro.
+        TipoPecaGrafica[][] tabuleiroGrafico = Conversor.converterTabuleiro(tabuleiroModelo);
+
+        // Atualiza a tela do jogo.
+        telaJogo.atualizarJPanelTabuleiro(tabuleiroGrafico);
     }
 }
