@@ -351,7 +351,7 @@ public enum Controlador {
         String title = "Iniciar partida multiplayer";
         Object[] message = {
             "Jogador das peças brancas:", jJogador1,
-            "jogador das peças pretas:", jJogador1
+            "jogador das peças pretas:", jJogador2
         };
 
         // Lança o diálogo.
