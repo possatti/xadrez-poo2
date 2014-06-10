@@ -6,9 +6,6 @@
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
 import br.edu.ifes.poo2.xadrez.ciu.cci.Controlador;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *

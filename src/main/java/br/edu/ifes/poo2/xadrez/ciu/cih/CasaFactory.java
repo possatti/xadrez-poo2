@@ -6,8 +6,6 @@
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  * Componente visual que representa uma casa no tabuleiro.

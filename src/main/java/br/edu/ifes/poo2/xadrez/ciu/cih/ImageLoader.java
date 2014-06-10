@@ -18,9 +18,8 @@ import javax.imageio.ImageIO;
  * @author possatti
  */
 public enum ImageLoader {
-    INSTANCE;
 
-    //private static final String RESOURCES_FOLDER = "src/main/resources/";
+    INSTANCE;
 
     /**
      * Carrega uma imagem a partir do caminho específicado.
@@ -43,6 +42,5 @@ public enum ImageLoader {
     public Image loadImageResource(String nome) throws IOException {
         InputStream imageInputStream = getClass().getResourceAsStream("/images/" + nome);
         return ImageIO.read(imageInputStream);
-        //return ImageIO.read(new File(RESOURCES_FOLDER + nome));
     }
 }

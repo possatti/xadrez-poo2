@@ -32,7 +32,7 @@ public class Conversor {
      * @param coluna Coluna da posição, variando de 0 a 7.
      * @return String no formato que a APL aceita.
      */
-    public static String converterPosicao(int linha, int coluna) throws NumberFormatException {
+    public static String converterPosicao(int linha, int coluna) {
         String strLinha = String.valueOf(linha + 1);
         String strColuna;
         switch (coluna) {

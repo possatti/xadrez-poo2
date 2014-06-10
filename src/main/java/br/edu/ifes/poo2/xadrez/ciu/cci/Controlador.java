@@ -131,7 +131,8 @@ public enum Controlador {
                 Object[] content = {
                     "Para qual peça o peão deve ser promovido?",
                     jPecas};
-                //JOptionPane.showConfirmDialog(null, content, "Selecione uma peça", JOptionPane.OK_CANCEL_OPTION);
+
+                // Lança o diálogo.
                 JOptionPane.showMessageDialog(null, content);
 
                 // Captura qual peça foi selecionada.
@@ -196,9 +197,6 @@ public enum Controlador {
             }
 
             // TODO Cadastrar os dados de jogador.
-            //System.out.println(apelido);
-            //System.out.println(email);
-            //System.out.println(nome);
         }
     }
 
@@ -248,9 +246,6 @@ public enum Controlador {
             }
 
             // TODO alterar os dados de jogador.
-            //System.out.println(novoApelido);
-            //System.out.println(novoEmail);
-            //System.out.println(novoNome);
         }
     }
 
@@ -277,7 +272,6 @@ public enum Controlador {
             String apelido = jApelido.getText();
 
             // TODO Tentar deletar o jogador.
-            //System.out.println(apelido);
         }
     }
 

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.edu.ifes.poo2.xadrez.ciu.cih;
 
 /**
+ * É o painel que contém os elementos do chat.
  *
  * @author possatti
  */
@@ -18,20 +18,20 @@ public class JPanelChat extends javax.swing.JPanel {
     public JPanelChat() {
         initComponents();
     }
-    
+
     /**
      * Envia a mensagem do campo de texto para a tela do chat.
      */
     public void enviarMensagem() {
         String mensagem = jTextFieldMensagem.getText();
-        
+
         // Se a string não estiver vazia. A mensagem e adicionada ao chat.
-        if(!"".equals(mensagem)) {
+        if (!"".equals(mensagem)) {
             jTextAreaChat.append(mensagem + "\n");
             jTextFieldMensagem.setText("");
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +55,7 @@ public class JPanelChat extends javax.swing.JPanel {
         jTextFieldMensagem.setPreferredSize(null);
         jTextFieldMensagem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldMensagemtecla_enter(evt);
+                jTextFieldMensagemTeclaEnter(evt);
             }
         });
 
@@ -87,12 +87,12 @@ public class JPanelChat extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldMensagemtecla_enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMensagemtecla_enter
+    private void jTextFieldMensagemTeclaEnter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMensagemTeclaEnter
         // Se a tecla enter for pressionada, manda a mensagem para o chat.
         if ('\n' == evt.getKeyChar()) {
             enviarMensagem();
         }
-    }//GEN-LAST:event_jTextFieldMensagemtecla_enter
+    }//GEN-LAST:event_jTextFieldMensagemTeclaEnter
 
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         enviarMensagem();
