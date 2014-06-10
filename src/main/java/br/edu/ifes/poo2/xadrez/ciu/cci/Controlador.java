@@ -9,6 +9,8 @@ import br.edu.ifes.poo2.xadrez.ciu.cih.CorPeca;
 import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
+import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
+import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 import br.edu.ifes.poo2.xadrez.cln.cgt.AplPartida;
@@ -317,11 +319,12 @@ public enum Controlador {
             String maquina = jMaquina.getSelectedItem().toString();
             String cor = jCorJogador.getSelectedItem().toString();
 
-            // TODO Iniciar um novo jogo.
-            //System.out.println(jogador);
-            //System.out.println(maquina);
-            //System.out.println(cor);
-            // TODO Atualizar o tabuleiro conforme necessário.
+            // Inicia um novo jogo.
+            // FIXME Usar os jogadores do banco de dados mesmo.
+            aplPartida.criarPartida(new Jogador("branco"), new Jogador("preto"), TipoPartida.SINGLEPLAYER);
+
+            // Atualiza o tabuleiro conforme necessário.
+            atualizarTabuleiro();
         }
     }
 
@@ -367,11 +370,12 @@ public enum Controlador {
                 return;
             }
 
-            // TODO Iniciar um novo jogo multiplayer.
-            //System.out.println(jogador1);
-            //System.out.println(jogador2);
-            //System.out.println(cor);
-            // TODO Atualizar o tabuleiro conforme necessário.
+            // Inicia um novo jogo multiplayer.
+            // FIXME Usar os jogadores do banco de dados mesmo.
+            aplPartida.criarPartida(new Jogador("branco"), new Jogador("preto"), TipoPartida.MULTIPLAYER);
+
+            // Atualiza o tabuleiro conforme necessário.
+            atualizarTabuleiro();
         }
     }
 
