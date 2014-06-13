@@ -12,6 +12,10 @@ public class TabuleiroCreator {
     private static class TabuleiroCreatorSingletonHolder {
 
         private static final TabuleiroCreator INSTANCE = new TabuleiroCreator();
+
+        private TabuleiroCreatorSingletonHolder() {
+
+        }
     }
 
     private TabuleiroCreator() {
