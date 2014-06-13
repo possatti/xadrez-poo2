@@ -2,8 +2,7 @@ package br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
-import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroBuilderImpl;
-import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroDirector;
+import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroCreator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,18 +13,13 @@ import org.junit.Test;
  */
 public class StrategyRainhaTest {
 
-    private TabuleiroBuilderImpl tabuleiroBuilder;
-    private TabuleiroDirector tabuleiroDirector;
     private Tabuleiro tab;
     Peca rainhaPreta;
     Peca rainhaBranca;
 
     @Before
     public void before() {
-        this.tabuleiroBuilder = new TabuleiroBuilderImpl();
-        this.tabuleiroDirector = new TabuleiroDirector(tabuleiroBuilder);
-        this.tabuleiroDirector.criarTabuleiro();
-        this.tab = tabuleiroBuilder.getTabuleiro();
+        this.tab = TabuleiroCreator.getInstance().criarTabuleiro();
         this.rainhaBranca = this.tab.getPosicao("d1").getPeca();
         this.rainhaPreta = this.tab.getPosicao("d8").getPeca();
     }

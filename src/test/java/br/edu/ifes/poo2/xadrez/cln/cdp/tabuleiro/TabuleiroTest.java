@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro;
 
 import junit.framework.Assert;
@@ -13,18 +8,13 @@ import org.junit.Test;
  *
  * @author phillipe
  */
-public class TestTabuleiro {
+public class TabuleiroTest {
 
-    private TabuleiroBuilderImpl tabuleiroBuilder;
-    private TabuleiroDirector tabuleiroDirector;
     private Tabuleiro tabuleiro;
 
     @Before
     public void before() {
-        this.tabuleiroBuilder = new TabuleiroBuilderImpl();
-        this.tabuleiroDirector = new TabuleiroDirector(tabuleiroBuilder);
-        this.tabuleiroDirector.criarTabuleiro();
-        this.tabuleiro = tabuleiroBuilder.getTabuleiro();
+        this.tabuleiro = TabuleiroCreator.getInstance().criarTabuleiro();
     }
 
     @Test

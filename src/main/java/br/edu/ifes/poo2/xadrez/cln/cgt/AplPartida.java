@@ -2,14 +2,13 @@ package br.edu.ifes.poo2.xadrez.cln.cgt;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.InteligenciaArtificial;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Partida;
-import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroBuilderImpl;
-import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroDirector;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
 import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
+import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroCreator;
 import br.edu.ifes.poo2.xadrez.util.exceptions.PosicaoInvalidaException;
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
@@ -20,16 +19,13 @@ public class AplPartida {
 
     private final InteligenciaArtificial inteligenciaArtificial;
 
-    private final TabuleiroBuilderImpl tabuleiroBuilder;
-
-    private final TabuleiroDirector tabuleiroDirector;
+    private final TabuleiroCreator tabuleiroCreator;
 
     private final Mapper mapper;
 
     public AplPartida() {
         this.inteligenciaArtificial = InteligenciaArtificial.getInstance();
-        this.tabuleiroBuilder = new TabuleiroBuilderImpl();
-        this.tabuleiroDirector = new TabuleiroDirector(tabuleiroBuilder);
+        this.tabuleiroCreator = TabuleiroCreator.getInstance();
         this.mapper = DozerBeanMapperSingletonWrapper.getInstance();
     }
 
@@ -140,8 +136,7 @@ public class AplPartida {
     public void criarPartida(Jogador jogadorBranco, Jogador jogadorPreto, TipoPartida tipoPartida) {
         Tabuleiro novoTabuleiro;
 
-        tabuleiroDirector.criarTabuleiro();
-        novoTabuleiro = tabuleiroBuilder.getTabuleiro();
+        novoTabuleiro = tabuleiroCreator.criarTabuleiro();
 
         this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro, tipoPartida);
     }
