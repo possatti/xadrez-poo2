@@ -37,8 +37,6 @@ public class AplPartida {
     public void fazerJogada(String posicaoInicialId, String posicaoFinalId) {
         Operacao tipoJogada;
         Posicao posicaoInicial, posicaoFinal;
-        Peca rei, torre;
-        char linhaAtual;
 
         tipoJogada = identificarOperacao(posicaoInicialId, posicaoFinalId);
         posicaoInicial = getPosicaoTabuleiro(posicaoInicialId);
@@ -143,12 +141,14 @@ public class AplPartida {
 
     public PecaDTO[][] getTabuleiro() {
         PecaDTO[][] tabuleiro = new PecaDTO[8][8];
+        Posicao posicaoTemp;
 
         int coluna = 0;
         for (char colunaChar = 'a'; colunaChar < 'i'; colunaChar++) {
             int linha = 0;
-            for (char linhaChar = '1'; linhaChar < 9; linhaChar++) {
-                tabuleiro[coluna][linha] = mapper.map(this.partidaAtual.getTabuleiro().getPosicao("" + colunaChar + linhaChar).getPeca(), PecaDTO.class);
+            for (char linhaChar = '1'; linhaChar < '9'; linhaChar++) {
+                posicaoTemp = this.partidaAtual.getTabuleiro().getPosicao("" + colunaChar + linhaChar);
+                tabuleiro[coluna][linha] = posicaoTemp.existePeca() ? mapper.map(posicaoTemp.getPeca(), PecaDTO.class) : null;
                 linha++;
             }
             coluna++;
@@ -157,8 +157,13 @@ public class AplPartida {
         return tabuleiro;
     }
 
+    /**
+     * Carrega uma partida salva no banco de dados.
+     *
+     * @param id O identificador da partida.
+     */
     public void carregarPartida(String id) {
-
+        throw new UnsupportedOperationException("Não implementado ainda!");
     }
 
 }

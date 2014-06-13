@@ -4,18 +4,18 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
 
 public class AplJogador {
 
-	private Jogador jogador;
+    private Jogador jogador;
 
-	public void criarJogador(String nome) {
+    public void criarJogador(String nome) {
 
-	}
+    }
 
-	public void editarJogador(String id, String novoNome) {
+    public void editarJogador(String id, String novoNome) {
 
-	}
+    }
 
-	public void apagarJogador(String id) {
+    public void apagarJogador(String id) {
 
-	}
+    }
 
 }
