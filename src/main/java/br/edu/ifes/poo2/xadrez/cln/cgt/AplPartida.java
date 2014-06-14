@@ -9,6 +9,7 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroCreator;
+import br.edu.ifes.poo2.xadrez.util.exceptions.JogadaInvalidaException;
 import br.edu.ifes.poo2.xadrez.util.exceptions.PosicaoInvalidaException;
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
@@ -41,6 +42,10 @@ public class AplPartida {
         tipoJogada = identificarOperacao(posicaoInicialId, posicaoFinalId);
         posicaoInicial = getPosicaoTabuleiro(posicaoInicialId);
 
+        if (!posicaoInicial.existePeca() || !ehJogadorAtual(posicaoInicial)) {
+            throw new JogadaInvalidaException("Jogada inválida!");
+        }
+
         switch (tipoJogada) {
             case MOVIMENTO:
                 posicaoFinal = getPosicaoTabuleiro(posicaoFinalId);
@@ -67,6 +72,13 @@ public class AplPartida {
             default:
                 break;
         }
+
+        partidaAtual.trocaJogadorDaVez();
+    }
+
+    private boolean ehJogadorAtual(Posicao posicaoInicial) {
+        return posicaoInicial.existePeca()
+                && posicaoInicial.getPeca().getCor() == partidaAtual.getCor(partidaAtual.getJogadorDaVez());
     }
 
     private void executarRoqueMaior(Posicao posicaoInicial) {

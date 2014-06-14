@@ -52,4 +52,8 @@ public class Partida {
         return jogador == jogadorBranco ? Cor.BRANCO : Cor.PRETO;
     }
 
+    public void trocaJogadorDaVez() {
+        this.jogadorDaVez = this.jogadorDaVez == this.jogadorBranco ? this.jogadorPreto : this.jogadorBranco;
+    }
+
 }

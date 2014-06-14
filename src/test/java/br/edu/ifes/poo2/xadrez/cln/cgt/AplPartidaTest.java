@@ -44,4 +44,22 @@ public class AplPartidaTest {
             Assert.assertEquals(Cor.PRETO, tabuleiro[coluna][7].getCor());
         }
     }
+
+    @Test
+    public void fazerJogadaMovimentoTest() {
+        this.aplPartida.fazerJogada("a2", "a4");
+        this.aplPartida.fazerJogada("e7", "e5");
+        this.aplPartida.fazerJogada("b2", "b3");
+        this.aplPartida.fazerJogada("g8", "h6");
+
+        Assert.assertNotNull(aplPartida.getTabuleiro()[0][3]);
+        Assert.assertNotNull(aplPartida.getTabuleiro()[1][2]);
+        Assert.assertNotNull(aplPartida.getTabuleiro()[4][4]);
+        Assert.assertNotNull(aplPartida.getTabuleiro()[7][5]);
+
+        Assert.assertNull(aplPartida.getTabuleiro()[0][1]);
+        Assert.assertNull(aplPartida.getTabuleiro()[1][1]);
+        Assert.assertNull(aplPartida.getTabuleiro()[4][6]);
+        Assert.assertNull(aplPartida.getTabuleiro()[6][7]);
+    }
 }
