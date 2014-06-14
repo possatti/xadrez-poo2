@@ -43,13 +43,13 @@ public class Partida {
     public void addPecaCapturada(Peca peca) {
         Jogador jogador;
 
-        if (peca.getCor() == Cor.BRANCO) {
-            jogador = this.jogadorBranco;
-        } else {
-            jogador = this.jogadorPreto;
-        }
+        jogador = peca.getCor() == Cor.BRANCO ? this.jogadorPreto : this.jogadorBranco;
 
         pecasCapturadas.get(jogador).add(peca);
+    }
+
+    public Cor getCor(Jogador jogador) {
+        return jogador == jogadorBranco ? Cor.BRANCO : Cor.PRETO;
     }
 
 }
