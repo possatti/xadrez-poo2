@@ -12,6 +12,12 @@ package br.edu.ifes.poo2.xadrez.ciu.cih;
  */
 public class JDialogSobre extends javax.swing.JDialog {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonOk;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    // End of variables declaration//GEN-END:variables
+
     /**
      * Creates new form JDialogSobre
      */
@@ -68,10 +74,4 @@ public class JDialogSobre extends javax.swing.JDialog {
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonOkActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonOk;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    // End of variables declaration//GEN-END:variables
 }

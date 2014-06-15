@@ -12,6 +12,13 @@ package br.edu.ifes.poo2.xadrez.ciu.cih;
  */
 public class JPanelChat extends javax.swing.JPanel {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEnviar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaChat;
+    private javax.swing.JTextField jTextFieldMensagem;
+    // End of variables declaration//GEN-END:variables
+
     /**
      * Creates new form JPanelChat
      */
@@ -97,12 +104,4 @@ public class JPanelChat extends javax.swing.JPanel {
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         enviarMensagem();
     }//GEN-LAST:event_jButtonEnviarActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEnviar;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaChat;
-    private javax.swing.JTextField jTextFieldMensagem;
-    // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,14 @@ package br.edu.ifes.poo2.xadrez.ciu.cih;
  */
 public class JPanelJogo extends javax.swing.JPanel {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonJogar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelNomeJogador;
+    private br.edu.ifes.poo2.xadrez.ciu.cih.JPanelTabuleiro jPanelTabuleiro;
+    private javax.swing.JTextField jTextFieldJogada;
+    // End of variables declaration//GEN-END:variables
+
     /**
      * Creates new form JPanelJogo
      */
@@ -80,13 +88,4 @@ public class JPanelJogo extends javax.swing.JPanel {
                     .addComponent(jTextFieldJogada, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonJogar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelNomeJogador;
-    private br.edu.ifes.poo2.xadrez.ciu.cih.JPanelTabuleiro jPanelTabuleiro;
-    private javax.swing.JTextField jTextFieldJogada;
-    // End of variables declaration//GEN-END:variables
 }

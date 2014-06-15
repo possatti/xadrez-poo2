@@ -11,6 +11,7 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias.StrategyPeao;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias.StrategyRainha;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias.StrategyRei;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias.StrategyTorre;
+import br.edu.ifes.poo2.xadrez.util.exceptions.ClonagemException;
 import java.util.HashMap;
 
 public class FabricaPecasImpl implements FabricaPecas {
@@ -49,7 +50,7 @@ public class FabricaPecasImpl implements FabricaPecas {
         try {
             return getMap(cor).get(tipoPeca).clone();
         } catch (CloneNotSupportedException ex) {
-            throw new RuntimeException(ex);
+            throw new ClonagemException(ex);
         }
     }
 
@@ -87,14 +88,7 @@ public class FabricaPecasImpl implements FabricaPecas {
     }
 
     private Map<TipoPeca, Peca> getMap(Cor cor) {
-        switch (cor) {
-            case BRANCO:
-                return this.prototiposPecasBrancas;
-            case PRETO:
-                return this.prototiposPecasPretas;
-            default:
-                throw new RuntimeException("Nao foi possivel obter instancia  de Map<TipoPeca, Peca>.");
-        }
+        return cor == Cor.BRANCO ? this.prototiposPecasBrancas : this.prototiposPecasPretas;
     }
 
     private boolean estaInstanciada(Cor cor, TipoPeca tipoPeca) {

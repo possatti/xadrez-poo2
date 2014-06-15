@@ -12,7 +12,25 @@ import br.edu.ifes.poo2.xadrez.ciu.cci.Controlador;
  * @author lucas
  */
 public class TelaJogo extends javax.swing.JFrame {
-
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenuAjuda;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemApagarJogador;
+    private javax.swing.JMenuItem jMenuItemCadastrarJogador;
+    private javax.swing.JMenuItem jMenuItemEditarJogador;
+    private javax.swing.JMenuItem jMenuItemMultiplayer;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemSalvar;
+    private javax.swing.JMenuItem jMenuItemSalvarSair;
+    private javax.swing.JMenuItem jMenuItemSingleplayer;
+    private javax.swing.JMenuItem jMenuItemSobre;
+    private javax.swing.JMenu jMenuPartidas;
+    private javax.swing.JMenu jMenujogadores;
+    private br.edu.ifes.poo2.xadrez.ciu.cih.JPanelChat jPanelChat1;
+    private br.edu.ifes.poo2.xadrez.ciu.cih.JPanelJogo jPanelJogo1;
+    // End of variables declaration//GEN-END:variables
+    
     /**
      * Creates new form TelaJogo
      */
@@ -202,22 +220,4 @@ public class TelaJogo extends javax.swing.JFrame {
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         Controlador.INSTANCE.terminarPartidaSemSalvar();
     }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenuAjuda;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItemApagarJogador;
-    private javax.swing.JMenuItem jMenuItemCadastrarJogador;
-    private javax.swing.JMenuItem jMenuItemEditarJogador;
-    private javax.swing.JMenuItem jMenuItemMultiplayer;
-    private javax.swing.JMenuItem jMenuItemSair;
-    private javax.swing.JMenuItem jMenuItemSalvar;
-    private javax.swing.JMenuItem jMenuItemSalvarSair;
-    private javax.swing.JMenuItem jMenuItemSingleplayer;
-    private javax.swing.JMenuItem jMenuItemSobre;
-    private javax.swing.JMenu jMenuPartidas;
-    private javax.swing.JMenu jMenujogadores;
-    private br.edu.ifes.poo2.xadrez.ciu.cih.JPanelChat jPanelChat1;
-    private br.edu.ifes.poo2.xadrez.ciu.cih.JPanelJogo jPanelJogo1;
-    // End of variables declaration//GEN-END:variables
 }

@@ -22,6 +22,9 @@ public class JPanelCasa extends javax.swing.JPanel {
     private static final Color CORHIGHLIGHT = Color.YELLOW;
     private static final Color CORSELECIONADA = Color.GREEN;
     private Color corFundo;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelPecaIcon;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Cria uma casa sem nenhuma das referências necessárias para o
@@ -176,9 +179,4 @@ public class JPanelCasa extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         Controlador.INSTANCE.cliqueCasa(this);
     }//GEN-LAST:event_formMouseClicked
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelPecaIcon;
-    // End of variables declaration//GEN-END:variables
 }

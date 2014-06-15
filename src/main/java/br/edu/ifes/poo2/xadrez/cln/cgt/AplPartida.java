@@ -47,7 +47,7 @@ public class AplPartida {
      * na {@code posicaoInicialId} ou quando não é a vez do jogador e ele tenta
      * fazer uma jogada.
      */
-    public void fazerJogada(String posicaoInicialId, String posicaoFinalId) throws JogadaInvalidaException {
+    public void fazerJogada(String posicaoInicialId, String posicaoFinalId) {
         Operacao tipoJogada;
         Posicao posicaoInicial, posicaoFinal;
 
