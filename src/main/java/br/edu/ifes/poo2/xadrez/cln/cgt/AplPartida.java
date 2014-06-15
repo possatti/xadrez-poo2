@@ -35,16 +35,29 @@ public class AplPartida {
         MOVIMENTO, CAPTURA, PROMOCAO, RMAIOR, RMENOR, XEQUE, XMATE;
     }
 
-    public void fazerJogada(String posicaoInicialId, String posicaoFinalId) {
+    /**
+     * Executa uma jogada na partida atual.
+     *
+     * @param posicaoInicialId A string que representa a posição inicial da
+     * jogada. Exemplo: "{@literal a1}".
+     * @param posicaoFinalId A string que representa a posição final da jogada,
+     * exceto para jogadas como Roque maior e Roque menor, onde apenas a posição
+     * do Rei é necessária.
+     * @throws JogadaInvalidaException É lançada quando não existe nenhuma peça
+     * na {@code posicaoInicialId} ou quando não é a vez do jogador e ele tenta
+     * fazer uma jogada.
+     */
+    public void fazerJogada(String posicaoInicialId, String posicaoFinalId) throws JogadaInvalidaException {
         Operacao tipoJogada;
         Posicao posicaoInicial, posicaoFinal;
 
-        tipoJogada = identificarOperacao(posicaoInicialId, posicaoFinalId);
         posicaoInicial = getPosicaoTabuleiro(posicaoInicialId);
 
         if (!posicaoInicial.existePeca() || !ehJogadorAtual(posicaoInicial)) {
             throw new JogadaInvalidaException("Jogada inválida!");
         }
+
+        tipoJogada = identificarOperacao(posicaoInicialId, posicaoFinalId);
 
         switch (tipoJogada) {
             case MOVIMENTO:
@@ -105,11 +118,7 @@ public class AplPartida {
         Peca pecaTmp;
         Tabuleiro tabuleiro = this.partidaAtual.getTabuleiro();
 
-        if (!validarStringPosicao(posicaoInicialId)) {
-            throw new PosicaoInvalidaException("Posição " + posicaoFinalId + " é inválida!");
-        } else {
-            posicaoInicial = getPosicaoTabuleiro(posicaoInicialId);
-        }
+        posicaoInicial = getPosicaoTabuleiro(posicaoInicialId);
 
         if (posicaoFinalId == null || posicaoFinalId.matches("")) {
             if (tabuleiro.isRoqueMaior(posicaoInicial)) {
@@ -140,6 +149,10 @@ public class AplPartida {
     }
 
     private Posicao getPosicaoTabuleiro(String posicao) {
+        if (!validarStringPosicao(posicao)) {
+            throw new PosicaoInvalidaException("Posição " + posicao + " é inválida!");
+        }
+
         return this.partidaAtual.getTabuleiro().getPosicao(posicao);
     }
 
