@@ -19,14 +19,16 @@ public class AplPartidaTest {
 
     private AplPartida aplPartida;
     private Jogador jogadorBranco, jogadorPreto;
-    final int LINHA_PEAO_BRANCO = 1;
-    final int LINHA_PEAO_PRETO = 6;
+    private final int LINHA_PEAO_BRANCO = 1;
+    private final int LINHA_PEAO_PRETO = 6;
+    private final String NOME_JOGADOR_BRANCO = "Jogador Branco";
+    private final String NOME_JOGADOR_PRETO = "Jogador Preto";
 
     @Before
     public void before() {
         this.aplPartida = new AplPartida();
-        this.jogadorBranco = new Jogador("Jogaddor Branco");
-        this.jogadorPreto = new Jogador("Jogador Preto");
+        this.jogadorBranco = new Jogador(NOME_JOGADOR_BRANCO);
+        this.jogadorPreto = new Jogador(NOME_JOGADOR_PRETO);
         this.aplPartida.criarPartida(jogadorBranco, jogadorPreto, TipoPartida.MULTIPLAYER);
     }
 
@@ -181,5 +183,11 @@ public class AplPartidaTest {
         this.aplPartida.fazerJogada("g1", "h3");
         //Xeque
         this.aplPartida.fazerJogada("d6", "b4");
+    }
+
+    @Test
+    public void getNomeJogadorTest() {
+        Assert.assertEquals(NOME_JOGADOR_BRANCO, aplPartida.getNomeJogador(Cor.BRANCO));
+        Assert.assertEquals(NOME_JOGADOR_PRETO, aplPartida.getNomeJogador(Cor.PRETO));
     }
 }

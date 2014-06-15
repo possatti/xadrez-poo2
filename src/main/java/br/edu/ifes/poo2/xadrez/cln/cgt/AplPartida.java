@@ -6,6 +6,7 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
 import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroCreator;
@@ -164,6 +165,15 @@ public class AplPartida {
         this.partidaAtual = new Partida(jogadorBranco, jogadorPreto, novoTabuleiro, tipoPartida);
     }
 
+    /**
+     * Retorna uma representação do estado atual do tabuleiro com as peças.
+     *
+     * @return Uma matriz de {@code PecaDTO}, onde o primeiro índice da matriz
+     * representa as colunas e o segundo índice representa as linhas. No caso as
+     * colunas a correspondência se dá da seguinte forma: a -> 0 b -> 1,
+     * sucessivamente. Para as linhas é só subtrair 1: 1 -> 0 2 -> 1,
+     * sucessivamente.
+     */
     public PecaDTO[][] getTabuleiro() {
         PecaDTO[][] tabuleiro = new PecaDTO[8][8];
         Posicao posicaoTemp;
@@ -191,4 +201,7 @@ public class AplPartida {
         throw new UnsupportedOperationException("Não implementado ainda!");
     }
 
+    public String getNomeJogador(Cor cor) {
+        return cor == Cor.BRANCO ? partidaAtual.getJogadorBranco().getNome() : partidaAtual.getJogadorPreto().getNome();
+    }
 }
