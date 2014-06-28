@@ -4,19 +4,12 @@ package br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro;
  *
  * @author phillipe
  */
-public class TabuleiroCreator {
+public enum TabuleiroCreator {
+
+    INSTANCE;
 
     private final TabuleiroBuilderImpl tabuleiroBuilder;
     private final TabuleiroDirector tabuleiroDirector;
-
-    private static class TabuleiroCreatorSingletonHolder {
-
-        private static final TabuleiroCreator INSTANCE = new TabuleiroCreator();
-
-        private TabuleiroCreatorSingletonHolder() {
-
-        }
-    }
 
     private TabuleiroCreator() {
         this.tabuleiroBuilder = new TabuleiroBuilderImpl();
@@ -24,7 +17,7 @@ public class TabuleiroCreator {
     }
 
     public static TabuleiroCreator getInstance() {
-        return TabuleiroCreatorSingletonHolder.INSTANCE;
+        return INSTANCE;
     }
 
     public Tabuleiro criarTabuleiro() {

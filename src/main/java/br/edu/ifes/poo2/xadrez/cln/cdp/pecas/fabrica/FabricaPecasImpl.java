@@ -14,7 +14,9 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias.StrategyTorre;
 import br.edu.ifes.poo2.xadrez.util.exceptions.ClonagemException;
 import java.util.HashMap;
 
-public class FabricaPecasImpl implements FabricaPecas {
+public enum FabricaPecasImpl implements FabricaPecas {
+
+    INSTANCE;
 
     private final Map<TipoPeca, Peca> prototiposPecasBrancas;
     private final Map<TipoPeca, Peca> prototiposPecasPretas;
@@ -24,17 +26,8 @@ public class FabricaPecasImpl implements FabricaPecas {
         prototiposPecasPretas = new HashMap<>();
     }
 
-    private static class FabricaPecasSingletonHolder {
-
-        static FabricaPecasImpl instance = new FabricaPecasImpl();
-
-        private FabricaPecasSingletonHolder() {
-
-        }
-    }
-
     public static FabricaPecas getInstance() {
-        return FabricaPecasSingletonHolder.instance;
+        return INSTANCE;
     }
 
     @Override
@@ -56,26 +49,26 @@ public class FabricaPecasImpl implements FabricaPecas {
 
     private void setStrategy(PecaImpl peca) {
         switch (peca.getTipoPeca()) {
-            case BISPO:
-                peca.setEstrategia(new StrategyBispo());
-                break;
-            case CAVALO:
-                peca.setEstrategia(new StrategyCavalo());
-                break;
-            case PEAO:
-                peca.setEstrategia(new StrategyPeao());
-                break;
-            case RAINHA:
-                peca.setEstrategia(new StrategyRainha());
-                break;
-            case REI:
-                peca.setEstrategia(new StrategyRei());
-                break;
-            case TORRE:
-                peca.setEstrategia(new StrategyTorre());
-                break;
-            default:
-                break;
+        case BISPO:
+            peca.setEstrategia(new StrategyBispo());
+            break;
+        case CAVALO:
+            peca.setEstrategia(new StrategyCavalo());
+            break;
+        case PEAO:
+            peca.setEstrategia(new StrategyPeao());
+            break;
+        case RAINHA:
+            peca.setEstrategia(new StrategyRainha());
+            break;
+        case REI:
+            peca.setEstrategia(new StrategyRei());
+            break;
+        case TORRE:
+            peca.setEstrategia(new StrategyTorre());
+            break;
+        default:
+            break;
         }
     }
 
@@ -92,8 +85,7 @@ public class FabricaPecasImpl implements FabricaPecas {
     }
 
     private boolean estaInstanciada(Cor cor, TipoPeca tipoPeca) {
-        return (cor == Cor.BRANCO && prototiposPecasBrancas.containsKey(tipoPeca))
-                || (cor == Cor.PRETO && prototiposPecasPretas.containsKey(tipoPeca));
+        return (cor == Cor.BRANCO && prototiposPecasBrancas.containsKey(tipoPeca)) || (cor == Cor.PRETO && prototiposPecasPretas.containsKey(tipoPeca));
     }
 
 }
