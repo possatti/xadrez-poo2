@@ -1,5 +1,9 @@
 package br.edu.ifes.poo2.xadrez.cln.cgt;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
 import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
@@ -7,9 +11,6 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 import br.edu.ifes.poo2.xadrez.util.exceptions.JogadaInvalidaException;
 import br.edu.ifes.poo2.xadrez.util.exceptions.PosicaoInvalidaException;
-import junit.framework.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  *

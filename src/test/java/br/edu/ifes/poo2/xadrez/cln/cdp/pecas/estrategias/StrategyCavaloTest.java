@@ -1,11 +1,12 @@
 package br.edu.ifes.poo2.xadrez.cln.cdp.pecas.estrategias;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.Tabuleiro;
 import br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro.TabuleiroCreator;
-import junit.framework.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  *

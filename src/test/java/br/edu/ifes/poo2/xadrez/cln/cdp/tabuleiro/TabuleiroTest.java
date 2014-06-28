@@ -1,6 +1,6 @@
 package br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

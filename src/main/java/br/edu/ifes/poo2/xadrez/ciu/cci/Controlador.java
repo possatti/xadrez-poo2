@@ -5,6 +5,10 @@
  */
 package br.edu.ifes.poo2.xadrez.ciu.cci;
 
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 import br.edu.ifes.poo2.xadrez.ciu.cih.CorPeca;
 import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
@@ -15,9 +19,6 @@ import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
 import br.edu.ifes.poo2.xadrez.cln.cgt.AplPartida;
 import br.edu.ifes.poo2.xadrez.util.Validador;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  * Controla o aplicativo, fazendo intermédio entre o modelo de dados e a
@@ -291,9 +292,9 @@ public enum Controlador {
         };
 
         // Define os elementos de obtenção de dados do usuário.
-        JComboBox jJogador = new JComboBox(jogadores);
-        JComboBox jMaquina = new JComboBox(maquinas);
-        JComboBox jCorJogador = new JComboBox(cores);
+        JComboBox<String> jJogador = new JComboBox<>(jogadores);
+        JComboBox<String> jMaquina = new JComboBox<>(maquinas);
+        JComboBox<String> jCorJogador = new JComboBox<>(cores);
 
         // Organiza os elementos que irão aparecer.
         String title = "Iniciar partida singleplayer";
@@ -337,9 +338,9 @@ public enum Controlador {
         };
 
         // Define os elementos de obtenção de dados do usuário.
-        JComboBox jJogador1 = new JComboBox(jogadores);
-        JComboBox jJogador2 = new JComboBox(jogadores);
-        JComboBox jCorJogador = new JComboBox(cores);
+        JComboBox<String> jJogador1 = new JComboBox<>(jogadores);
+        JComboBox<String> jJogador2 = new JComboBox<>(jogadores);
+        JComboBox<String> jCorJogador = new JComboBox<>(cores);
 
         // Organiza os elementos que irão aparecer.
         String title = "Iniciar partida multiplayer";

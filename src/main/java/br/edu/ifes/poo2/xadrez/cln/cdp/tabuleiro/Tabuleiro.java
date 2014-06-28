@@ -1,17 +1,16 @@
 package br.edu.ifes.poo2.xadrez.cln.cdp.tabuleiro;
 
-import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
-import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
-import static br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor.BRANCO;
-import static br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor.PRETO;
-import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
-import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
-import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.fabrica.FabricaPecasImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import lombok.Getter;
 import lombok.Setter;
+import br.edu.ifes.poo2.xadrez.cln.cdp.Posicao;
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Peca;
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
+import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.fabrica.FabricaPecasImpl;
 
 public class Tabuleiro {
 
@@ -22,8 +21,9 @@ public class Tabuleiro {
     /**
      * Pega uma posição do Tabuleiro
      *
-     * @param id id da Posição. Ex.: {@code "11"} para coluna 1 e linha 1 ou
-     * {@code "32"} para coluna 3 e linha 2
+     * @param id
+     *            id da Posição. Ex.: {@code "11"} para coluna 1 e linha 1 ou
+     *            {@code "32"} para coluna 3 e linha 2
      * @return a Posicao pedida.
      */
     public Posicao getPosicao(String id) {
@@ -36,8 +36,7 @@ public class Tabuleiro {
         for (Map.Entry<String, Posicao> entry : posicoes.entrySet()) {
             Posicao posicao = entry.getValue();
 
-            if (posicao.existePeca() && posicao.getPeca().getTipoPeca() == TipoPeca.REI
-                    && posicao.getPeca().getCor() == cor) {
+            if (posicao.existePeca() && posicao.getPeca().getTipoPeca() == TipoPeca.REI && posicao.getPeca().getCor() == cor) {
                 posicaoRei = posicao;
             }
         }
@@ -48,7 +47,8 @@ public class Tabuleiro {
     /**
      * Pega todas as peças da cor dada.
      *
-     * @param cor A cor das peças.
+     * @param cor
+     *            A cor das peças.
      * @return Uma lista com todas as peças da cor dada.
      */
     public List<Peca> getPecas(Cor cor) {
@@ -65,7 +65,6 @@ public class Tabuleiro {
         return pecas;
     }
 
-    @SuppressWarnings("null")
     public boolean isEnPassant(Posicao posicaoAtual, Posicao novaPosicao) {
         Peca peaoAtual;
         Posicao posicaoCaptura = null;
@@ -73,8 +72,7 @@ public class Tabuleiro {
         char novaColuna = novaPosicao.getId().charAt(0);
         char novaLinha = novaPosicao.getId().charAt(1);
 
-        if (contemPeao(novaPosicao)
-                || !estaAndandoUmaColuna(posicaoAtual, novaPosicao)) {
+        if (contemPeao(novaPosicao) || !estaAndandoUmaColuna(posicaoAtual, novaPosicao)) {
             return false;
         }
 
@@ -88,15 +86,11 @@ public class Tabuleiro {
             andouDuasCasas = posicaoCaptura != null && posicaoCaptura.getId().charAt(1) == '4';
         }
 
-        return andouDuasCasas
-                && !novaPosicao.existePeca()
-                && validarPosicaoCapturaEnPassant(posicaoCaptura);
+        return andouDuasCasas && !novaPosicao.existePeca() && validarPosicaoCapturaEnPassant(posicaoCaptura);
     }
 
     private boolean validarPosicaoCapturaEnPassant(Posicao posicaoCaptura) {
-        return posicaoCaptura.existePeca()
-                && posicaoCaptura.getPeca().getTipoPeca() == TipoPeca.PEAO
-                && posicaoCaptura.getPeca().moveuUmaVez();
+        return posicaoCaptura.existePeca() && posicaoCaptura.getPeca().getTipoPeca() == TipoPeca.PEAO && posicaoCaptura.getPeca().moveuUmaVez();
     }
 
     private boolean estaAndandoUmaColuna(Posicao posicaoAtual, Posicao novaPosicao) {
@@ -104,15 +98,16 @@ public class Tabuleiro {
     }
 
     private boolean contemPeao(Posicao posicao) {
-        return posicao.existePeca()
-                && posicao.getPeca().getTipoPeca() == TipoPeca.PEAO;
+        return posicao.existePeca() && posicao.getPeca().getTipoPeca() == TipoPeca.PEAO;
     }
 
     /**
      * Verifica se o rei ficará em xeque com essa movimentação.
      *
-     * @param posicaoAtual Posicao atual da peça.
-     * @param posicaoFinal Movimento que deixará o rei em xeque.
+     * @param posicaoAtual
+     *            Posicao atual da peça.
+     * @param posicaoFinal
+     *            Movimento que deixará o rei em xeque.
      * @return {@code true} se for xeque ou {@code false} caso contrário.
      */
     public boolean isXeque(Posicao posicaoAtual, Posicao posicaoFinal) {
@@ -139,9 +134,9 @@ public class Tabuleiro {
         reiEmPerigo = copiaPecaAtual.validarMovimentoCaptura(posicaoRei);
         posicaoFinal.setPeca(null);
 
-        // Se o movimento for válido e o rei estiver em perigo na nova posição, então é um Xeque.
-        return posicaoAtual.getPeca().validarMovimento(posicaoFinal)
-                && reiEmPerigo;
+        // Se o movimento for válido e o rei estiver em perigo na nova posição,
+        // então é um Xeque.
+        return posicaoAtual.getPeca().validarMovimento(posicaoFinal) && reiEmPerigo;
     }
 
     private Peca copiaPecaNaPosicao(Posicao posicao) {
@@ -191,7 +186,8 @@ public class Tabuleiro {
      * Acha todas as posições que um rei pode escapar, pelo movimento ou pela
      * captura de alguma outra peça.
      *
-     * @param posicaoRei A posição que o rei se encontra.
+     * @param posicaoRei
+     *            A posição que o rei se encontra.
      * @return Uma lista com as possíveis posições.
      */
     private List<Posicao> posicoesEscapeRei(Posicao posicaoRei) {
@@ -201,27 +197,26 @@ public class Tabuleiro {
         char colunaAtual = posicaoRei.getId().charAt(0);
         char linhaAtual = posicaoRei.getId().charAt(1);
 
-        //Norte
+        // Norte
         idPosicoesPossiveis.add("" + colunaAtual + ((char) (linhaAtual + 1)));
-        //Sul
+        // Sul
         idPosicoesPossiveis.add("" + colunaAtual + ((char) (linhaAtual - 1)));
-        //Leste
+        // Leste
         idPosicoesPossiveis.add("" + ((char) (colunaAtual + 1)) + linhaAtual);
-        //Oeste
+        // Oeste
         idPosicoesPossiveis.add("" + ((char) (colunaAtual - 1)) + linhaAtual);
-        //Noroeste
+        // Noroeste
         idPosicoesPossiveis.add("" + ((char) (colunaAtual - 1)) + ((char) (linhaAtual + 1)));
-        //Nordeste
+        // Nordeste
         idPosicoesPossiveis.add("" + ((char) (colunaAtual + 1)) + ((char) (linhaAtual + 1)));
-        //Sudoeste
+        // Sudoeste
         idPosicoesPossiveis.add("" + ((char) (colunaAtual - 1)) + ((char) (linhaAtual - 1)));
-        //Sudeste
+        // Sudeste
         idPosicoesPossiveis.add("" + ((char) (colunaAtual - 1)) + ((char) (linhaAtual - 1)));
 
         for (String idPosicao : idPosicoesPossiveis) {
             Posicao posicaoPossivel = this.getPosicao(idPosicao);
-            if (posicaoPossivel != null
-                    && (rei.validarMovimento(posicaoPossivel) || rei.validarMovimentoCaptura(posicaoPossivel))) {
+            if (posicaoPossivel != null && (rei.validarMovimento(posicaoPossivel) || rei.validarMovimentoCaptura(posicaoPossivel))) {
                 posicoesRei.add(posicaoPossivel);
             }
         }
@@ -232,7 +227,8 @@ public class Tabuleiro {
     /**
      * Verifica se é um RoqueMaior.
      *
-     * @param posicaoAtual É a posição inicial do rei.
+     * @param posicaoAtual
+     *            É a posição inicial do rei.
      * @return {@code true} se é um roque maior ou {@code false} caso contrário.
      */
     public boolean isRoqueMaior(Posicao posicaoAtual) {
@@ -245,15 +241,14 @@ public class Tabuleiro {
             caminho.add("" + ((char) (colunhaAtual - nCaminho)) + linhaAtual);
         }
 
-        return validarPosicaoAtualRoque(posicaoAtual)
-                && !haPeca(caminho)
-                && validarPosicaoTorreRoque(posicaoTorre);
+        return validarPosicaoAtualRoque(posicaoAtual) && !haPeca(caminho) && validarPosicaoTorreRoque(posicaoTorre);
     }
 
     /**
      * Verifica se é um roque menor.
      *
-     * @param posicaoAtual A posição inicial do Rei.
+     * @param posicaoAtual
+     *            A posição inicial do Rei.
      * @return {@code true} se é um roque maior ou {@code false} caso contrário.
      */
     public boolean isRoqueMenor(Posicao posicaoAtual) {
@@ -266,20 +261,15 @@ public class Tabuleiro {
             caminho.add("" + ((char) (colunhaAtual + nCaminho)) + linhaAtual);
         }
 
-        return validarPosicaoAtualRoque(posicaoAtual)
-                && !haPeca(caminho)
-                && validarPosicaoTorreRoque(posicaoTorre);
+        return validarPosicaoAtualRoque(posicaoAtual) && !haPeca(caminho) && validarPosicaoTorreRoque(posicaoTorre);
     }
 
     private boolean validarPosicaoAtualRoque(Posicao posicaoAtual) {
-        return posicaoAtual.existePeca()
-                && !posicaoAtual.getPeca().jaMovimentou()
-                && posicaoAtual.getPeca().getTipoPeca() == TipoPeca.REI;
+        return posicaoAtual.existePeca() && !posicaoAtual.getPeca().jaMovimentou() && posicaoAtual.getPeca().getTipoPeca() == TipoPeca.REI;
     }
 
     private boolean validarPosicaoTorreRoque(Posicao posicaoTorre) {
-        return posicaoTorre.existePeca()
-                && !posicaoTorre.getPeca().jaMovimentou();
+        return posicaoTorre.existePeca() && !posicaoTorre.getPeca().jaMovimentou();
     }
 
     private boolean haPeca(List<String> caminho) {
