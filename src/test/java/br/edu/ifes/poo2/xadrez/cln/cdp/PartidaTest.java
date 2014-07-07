@@ -11,17 +11,18 @@ import org.junit.Test;
 public class PartidaTest {
 
     private Tabuleiro tab;
-    private JogadorFactory creator;
+    private Jogador branco = JogadorFactory.INSTANCE.criarJogador("branco", "Branco", "branco@xadrez.com");
+    private Jogador preto = JogadorFactory.INSTANCE.criarJogador("preto", "Preto", "preto@xadrez.com");
+   
 
     @Before
     public void before() {
         this.tab = TabuleiroCreator.getInstance().criarTabuleiro();
-        this.creator = JogadorFactory.getInstance();
     }
 
     @Test
     public void instanciarPartidaTest() {
-        Partida partida = new Partida(creator.criarJogador("Branco"), creator.criarJogador("Preto"), tab, TipoPartida.MULTIPLAYER);
+        Partida partida = new Partida(branco, preto, tab, TipoPartida.MULTIPLAYER);
 
         Assert.assertEquals("Branco", partida.getJogadorBranco().getNome());
         Assert.assertEquals("Preto", partida.getJogadorPreto().getNome());
@@ -31,8 +32,6 @@ public class PartidaTest {
 
     @Test
     public void getCorTest() {
-        Jogador branco = creator.criarJogador("Branco");
-        Jogador preto = creator.criarJogador("Preto");
         Partida partida = new Partida(branco, preto, tab, TipoPartida.MULTIPLAYER);
 
         Assert.assertEquals(Cor.BRANCO, partida.getCor(branco));
@@ -41,7 +40,7 @@ public class PartidaTest {
 
     @Test
     public void addPecaCapturadaTest() {
-        Partida partida = new Partida(creator.criarJogador("Branco"), creator.criarJogador("Preto"), tab, TipoPartida.MULTIPLAYER);
+        Partida partida = new Partida(branco, preto, tab, TipoPartida.MULTIPLAYER);
         Peca preta, branca;
 
         preta = tab.getPosicao("c7").getPeca();
