@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 public class Jogador {
 
     @Id
@@ -30,5 +29,18 @@ public class Jogador {
     private String email;
 
     private int pontuacao;
+
+    /**
+     * Cria um jogador comum, com todos os dados necessários.
+     *
+     * @param apelido Apelido do jogador.
+     * @param nome Nome do Jogador.
+     * @param email Email do jogador.
+     */
+    public Jogador(String apelido, String nome, String email) {
+        this.apelido = apelido;
+        this.nome = nome;
+        this.email = email;
+    }
 
 }
