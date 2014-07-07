@@ -11,12 +11,12 @@ import org.junit.Test;
 public class PartidaTest {
 
     private Tabuleiro tab;
-    private JogadorCreator creator;
+    private JogadorFactory creator;
 
     @Before
     public void before() {
         this.tab = TabuleiroCreator.getInstance().criarTabuleiro();
-        this.creator = JogadorCreator.getInstance();
+        this.creator = JogadorFactory.getInstance();
     }
 
     @Test

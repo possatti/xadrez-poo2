@@ -1,6 +1,7 @@
 package br.edu.ifes.poo2.xadrez.cln.cgt;
 
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
+import br.edu.ifes.poo2.xadrez.cln.cdp.JogadorFactory;
 import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.Cor;
@@ -27,8 +28,8 @@ public class AplPartidaTest {
     @Before
     public void before() {
         this.aplPartida = new AplPartida();
-        this.jogadorBranco = new Jogador(NOME_JOGADOR_BRANCO);
-        this.jogadorPreto = new Jogador(NOME_JOGADOR_PRETO);
+        this.jogadorBranco = JogadorFactory.INSTANCE.criarJogador("branco", NOME_JOGADOR_BRANCO, "branco@xadrez.com");
+        this.jogadorPreto = JogadorFactory.INSTANCE.criarJogador("preto", NOME_JOGADOR_PRETO, "preto@xadrez.com");
         this.aplPartida.criarPartida(jogadorBranco, jogadorPreto, TipoPartida.MULTIPLAYER);
     }
 

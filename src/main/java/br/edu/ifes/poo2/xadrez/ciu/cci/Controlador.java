@@ -10,6 +10,7 @@ import br.edu.ifes.poo2.xadrez.ciu.cih.JPanelCasa;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TelaJogo;
 import br.edu.ifes.poo2.xadrez.ciu.cih.TipoPecaGrafica;
 import br.edu.ifes.poo2.xadrez.cln.cdp.Jogador;
+import br.edu.ifes.poo2.xadrez.cln.cdp.JogadorFactory;
 import br.edu.ifes.poo2.xadrez.cln.cdp.TipoPartida;
 import br.edu.ifes.poo2.xadrez.cln.cdp.dto.PecaDTO;
 import br.edu.ifes.poo2.xadrez.cln.cdp.pecas.TipoPeca;
@@ -315,7 +316,9 @@ public enum Controlador {
 
             // Inicia um novo jogo.
             // FIXME Usar os jogadores do banco de dados mesmo.
-            aplPartida.criarPartida(new Jogador("branco"), new Jogador("preto"), TipoPartida.SINGLEPLAYER);
+            Jogador branco = JogadorFactory.INSTANCE.criarJogador("branco", "Branco", "braco@xadrez.com");
+            Jogador preto = JogadorFactory.INSTANCE.criarJogador("preto", "Preto", "preto@xadrez.com");
+            aplPartida.criarPartida(branco, preto, TipoPartida.SINGLEPLAYER);
 
             // Atualiza o tabuleiro conforme necessário.
             atualizarTabuleiro();
@@ -366,7 +369,9 @@ public enum Controlador {
 
             // Inicia um novo jogo multiplayer.
             // FIXME Usar os jogadores do banco de dados mesmo.
-            aplPartida.criarPartida(new Jogador("branco"), new Jogador("preto"), TipoPartida.MULTIPLAYER);
+            Jogador branco = JogadorFactory.INSTANCE.criarJogador("branco", "Branco", "braco@xadrez.com");
+            Jogador preto = JogadorFactory.INSTANCE.criarJogador("preto", "Preto", "preto@xadrez.com");
+            aplPartida.criarPartida(branco, preto, TipoPartida.MULTIPLAYER);
 
             // Atualiza o tabuleiro conforme necessário.
             atualizarTabuleiro();
