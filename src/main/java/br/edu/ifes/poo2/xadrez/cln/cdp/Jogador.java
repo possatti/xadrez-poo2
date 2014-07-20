@@ -1,28 +1,26 @@
 package br.edu.ifes.poo2.xadrez.cln.cdp;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
-public class Jogador {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+@Entity
+@Table(name = "JOGADOR")
+@EqualsAndHashCode(callSuper=true)
+public class Jogador extends AbstractPersistable<Long> {
 
     @Column(unique = true)
     private String apelido;
 
-    @Column(unique = true)
     private String nome;
 
     @Column(unique = true)
@@ -42,5 +40,6 @@ public class Jogador {
         this.nome = nome;
         this.email = email;
     }
+
 
 }
