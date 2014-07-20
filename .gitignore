@@ -6,3 +6,6 @@ nbactions.xml
 
 # Arquivo de configuração do hibernate.
 hibernate.cfg.xml
+
+# Arquivos de log
+*.log
