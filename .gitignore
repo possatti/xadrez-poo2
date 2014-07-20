@@ -7,5 +7,9 @@ nbactions.xml
 # Arquivo de configuração do hibernate.
 hibernate.cfg.xml
 
-# Arquivos de log
+# Arquivos de log.
 *.log
+
+# Arquivos do banco de dados.
+testdb.properties
+testdb.script
